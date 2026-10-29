@@ -1,0 +1,58 @@
+/* Custom Styles */
+.logo-img-asset {
+  height: 34px;
+  width: auto;
+  object-fit: contain;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.combo-toggle-btn.active-state {
+  background: linear-gradient(135deg, #0044ff, #00c4ff) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0, 82, 255, 0.2) !important;
+}
+
+@media(max-width: 800px) {
+  .roas-dual-display-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .roas-view-panel {
+    height: 240px !important;
+  }
+  .hero{
+    padding:100px 0 20px 0 !important;
+  }
+  .enterprise-marketing-bottom-shield-m{
+    padding:45px 0;
+  }
+}
+
+@media(max-width: 900px) {
+  .cta-banner-inner {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    text-align: center;
+  }
+
+  .cta-image-side img {
+    height: 240px !important;
+  }
+}
+
+
+
+
+/* blog *********************** */
+/* 3 Line Description with ... */
+.blog-body p, .card-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+  max-height: 4.5em; /* 3 lines height safety fallback */
+}

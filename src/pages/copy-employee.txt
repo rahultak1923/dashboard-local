@@ -1,0 +1,161 @@
+import React, { useState } from "react";
+import { RefreshCw, Plus, Mail, Phone, MapPin, Briefcase, X, User } from "lucide-react";
+import { T, bodyFont, displayFont, cardStyle, primaryBtn, PageHeader } from "../theme";
+
+const initialEmployees = [
+  { _id: "1", name: "Amit Sharma", email: "amit@company.com", phone: "+91 98765 12345", address: "Malviya Nagar, Jaipur", aadhar: "XXXX-XXXX-1234", pan: "ABCDE1234F", department: "Development", role: "Frontend Dev", location: "Jaipur Office", status: "Active", image: null },
+  { _id: "2", name: "Pooja Verma", email: "pooja@company.com", phone: "+91 91234 56789", address: "C-Scheme, Jaipur", aadhar: "XXXX-XXXX-5678", pan: "FGHIJ5678K", department: "Marketing", role: "SEO Executive", location: "Jaipur Office", status: "Active", image: null },
+];
+
+export default function EmployeesPage({ onNavigateToAdd, employeesList }) {
+  const [employees] = useState(employeesList || initialEmployees);
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [syncMsg, setSyncMsg] = useState("");
+
+  const handleSync = () => {
+    setLoading(true);
+    setSyncMsg("");
+    setTimeout(() => {
+      setSyncMsg("Google Sheet synchronization simulator active.");
+      setLoading(false);
+    }, 800);
+  };
+
+  return (
+    <div style={{ width: "100%", padding: "0 10px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20, flexWrap: "wrap", gap: 10 }}>
+        <PageHeader title="Employee Directory & CRM" subtitle="Kisi bhi employee par click karke uski poori details dekhein" />
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <button style={{ ...primaryBtn, background: T.navy }} onClick={handleSync} disabled={loading}>
+            <RefreshCw size={14} className={loading ? "spin" : ""} />
+            {loading ? "Syncing..." : "Sync Google Sheet"}
+          </button>
+          
+          <button style={primaryBtn} onClick={onNavigateToAdd}>
+            <Plus size={14} /> Add Employee
+          </button>
+        </div>
+      </div>
+
+      {syncMsg && (
+        <div style={{ padding: "10px 14px", background: T.goodSoft, color: T.good, borderRadius: 8, marginBottom: 16, fontFamily: bodyFont, fontSize: 13, fontWeight: 600 }}>
+          {syncMsg}
+        </div>
+      )}
+
+      {/* Employee Cards Grid */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
+        {employees.map((emp) => (
+          <div 
+            key={emp._id} 
+            onClick={() => setSelectedEmployee(emp)}
+            style={{ 
+              ...cardStyle({ padding: 18, display: "flex", flexDirection: "column", gap: 12 }), 
+              cursor: "pointer",
+              transition: "transform 0.15s ease, box-shadow 0.15s ease",
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-3px)"}
+            onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+              <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                <div style={{ width: 48, height: 48, borderRadius: "50%", background: `linear-gradient(135deg, ${T.primary}, ${T.sky})`, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 600, fontFamily: displayFont, overflow: "hidden", border: `2px solid ${T.border}` }}>
+                  {emp.image ? (
+                    <img src={emp.image} alt={emp.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  ) : (
+                    emp.name ? emp.name.split(" ").map(n => n[0]).join("").slice(0, 2).toUpperCase() : "EM"
+                  )}
+                </div>
+                <div>
+                  <div style={{ fontFamily: displayFont, fontSize: 15, fontWeight: 600, color: T.text }}>{emp.name}</div>
+                  <div style={{ fontFamily: bodyFont, fontSize: 11.5, color: T.textFaint }}>{emp.role || "Team Member"}</div>
+                </div>
+              </div>
+              <span style={{ fontSize: 10, padding: "3px 8px", borderRadius: 99, background: T.goodSoft, color: T.good, fontWeight: 700 }}>
+                {emp.status || "Active"}
+              </span>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, borderTop: `1px solid ${T.border}`, paddingTop: 10, fontFamily: bodyFont, fontSize: 12.5, color: T.textSoft }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}><Mail size={13} color={T.primary} /> {emp.email}</div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}><Phone size={13} color={T.primary} /> {emp.phone || "N/A"}</div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}><Briefcase size={13} color={T.primary} /> {emp.department || "General"}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* ENHANCED POPUP MODAL WITH LARGE PROFILE IMAGE */}
+      {selectedEmployee && (
+        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: 15 }}>
+          <div style={{ background: T.surface, borderRadius: 20, width: "100%", maxWidth: 480, boxShadow: T.shadowLg, position: "relative", overflow: "hidden", animation: "fadeIn 0.2s ease" }}>
+            
+            {/* Top Banner & Close Button */}
+            <div style={{ background: `linear-gradient(135deg, ${T.primary}, ${T.navy})`, height: 100, position: "relative", padding: 16 }}>
+              <button 
+                onClick={() => setSelectedEmployee(null)}
+                style={{ position: "absolute", top: 16, right: 16, background: "rgba(255,255,255,0.2)", border: "none", borderRadius: "50%", width: 32, height: 32, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "#fff" }}
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            {/* Profile Avatar & Header Info */}
+            <div style={{ padding: "0 24px 24px 24px", position: "relative", marginTop: -45, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+              <div style={{ width: 90, height: 90, borderRadius: "50%", background: T.surface, border: `4px solid ${T.surface}`, display: "flex", alignItems: "center", justifyContent: "center", color: T.primary, fontWeight: 700, fontSize: 24, overflow: "hidden", boxShadow: T.shadowSm, marginBottom: 8 }}>
+                {selectedEmployee.image ? (
+                  <img src={selectedEmployee.image} alt={selectedEmployee.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                ) : (
+                  <div style={{ width: "100%", height: "100%", background: `linear-gradient(135deg, ${T.primary}, ${T.sky})`, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    {selectedEmployee.name.split(" ").map(n => n[0]).join("").slice(0, 2).toUpperCase()}
+                  </div>
+                )}
+              </div>
+
+              <div style={{ fontFamily: displayFont, fontSize: 20, fontWeight: 600, color: T.text }}>{selectedEmployee.name}</div>
+              <div style={{ fontFamily: bodyFont, fontSize: 13, color: T.primary, fontWeight: 600, marginTop: 2 }}>{selectedEmployee.role || "Team Member"}</div>
+              <div style={{ fontFamily: bodyFont, fontSize: 12, color: T.textFaint, background: T.bg, padding: "3px 10px", borderRadius: 20, marginTop: 6, border: `1px solid ${T.border}` }}>
+                {selectedEmployee.department || "General"} • {selectedEmployee.location || "Jaipur Office"}
+              </div>
+
+              {/* Detailed Info Box */}
+              <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 10, background: T.bg, padding: 16, borderRadius: 12, border: `1px solid ${T.border}`, fontFamily: bodyFont, fontSize: 13, marginTop: 18, textAlign: "left" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: `1px solid ${T.border}`, paddingBottom: 6 }}>
+                  <span style={{ color: T.textFaint, fontWeight: 600 }}>Email:</span>
+                  <span style={{ color: T.text, fontWeight: 500 }}>{selectedEmployee.email}</span>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: `1px solid ${T.border}`, paddingBottom: 6 }}>
+                  <span style={{ color: T.textFaint, fontWeight: 600 }}>Mobile:</span>
+                  <span style={{ color: T.text, fontWeight: 500 }}>{selectedEmployee.phone || "N/A"}</span>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: `1px solid ${T.border}`, paddingBottom: 6 }}>
+                  <span style={{ color: T.textFaint, fontWeight: 600 }}>Address:</span>
+                  <span style={{ color: T.text, fontWeight: 500, textAlign: "right", maxWidth: 240 }}>{selectedEmployee.address || "N/A"}</span>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: `1px solid ${T.border}`, paddingBottom: 6 }}>
+                  <span style={{ color: T.textFaint, fontWeight: 600 }}>Aadhaar:</span>
+                  <span style={{ color: T.text, fontWeight: 500 }}>{selectedEmployee.aadhar || "N/A"}</span>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                  <span style={{ color: T.textFaint, fontWeight: 600 }}>PAN Card:</span>
+                  <span style={{ color: T.text, fontWeight: 500 }}>{selectedEmployee.pan || "N/A"}</span>
+                </div>
+              </div>
+
+              <div style={{ marginTop: 20, width: "100%" }}>
+                <button 
+                  onClick={() => setSelectedEmployee(null)} 
+                  style={{ ...primaryBtn, width: "100%", justifyContent: "center", padding: "10px" }}
+                >
+                  Close Details
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

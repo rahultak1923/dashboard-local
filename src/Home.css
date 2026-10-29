@@ -1,0 +1,2534 @@
+/* hightlight */
+/* ==========================================================================
+     📊 RE-ENGINEERED EXCLUSIVITY LIGHT STATS PANEL (-m Unique Suffix)
+   ========================================================================== */
+/* ==========================================================================
+     📊 RE-ENGINEERED EXCLUSIVITY LIGHT STATS PANEL (-m Unique Suffix)
+   ========================================================================== */
+.enterprise-marketing-bottom-shield-m {
+  background: var(--bg); /* Soft light dashboard canvas tint */
+  padding: 80px 0;
+  width: 100%;
+  position: relative;
+}
+
+.matrix-header-block-m {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* ==========================================================================
+   🎯 MATRIX HEADING WITH WEBSITE SIGNATURE NEON BLUE GRADIENT
+   ========================================================================== */
+.h2-matrix-title-m {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(28px, 3.8vw, 44px);
+  font-weight: 800;
+  color: #07132c;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* 🔷 वेबसाइट के ओरिजिनल ग्रेडिएंट का परफेक्ट हुक */
+.h2-matrix-title-m .txt-blue-m {
+  background: var(--neon-pink); /* आपके थीम वेरिएबल का उपयोग */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 2px 10px rgba(0, 210, 255, 0.25)); /* हल्का ग्लो इफ़ेक्ट */
+}
+
+/* ==========================================================================
+   🎴 Unique 4-Isolated Cards Grid & Glow Shadow Structure (Fixed & Sorted)
+   ========================================================================== */
+.stats-grid-quad-m {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 24px;
+  width: 100%;
+}
+
+.stat-node-card-m {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+/* 🟣 Card 1: Purple Theme + Fixed Soft Purple Glow Shadow */
+.stat-node-card-m.border-purple-m {
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.06), 0 2px 8px rgba(0, 0, 0, 0.01) !important;
+}
+.stat-node-card-m.border-purple-m:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(124, 58, 237, 0.25) !important;
+}
+
+/* 🔵 Card 2: Blue Theme + Fixed Soft Blue Glow Shadow */
+.stat-node-card-m.border-blue-m {
+  box-shadow: 0 12px 30px rgba(0, 82, 255, 0.06), 0 2px 8px rgba(0, 0, 0, 0.01) !important;
+}
+.stat-node-card-m.border-blue-m:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(0, 82, 255, 0.22) !important;
+}
+
+/* 🟠 Card 3: Orange Theme + Fixed Soft Orange Glow Shadow */
+.stat-node-card-m.border-orange-m {
+  box-shadow: 0 12px 30px rgba(234, 88, 12, 0.06), 0 2px 8px rgba(0, 0, 0, 0.01) !important;
+}
+.stat-node-card-m.border-orange-m:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(234, 88, 12, 0.22) !important;
+}
+
+/* 🟢 Card 4: Green Theme + Fixed Soft Green Glow Shadow */
+.stat-node-card-m.border-green-m {
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.06), 0 2px 8px rgba(0, 0, 0, 0.01) !important;
+}
+.stat-node-card-m.border-green-m:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(16, 185, 129, 0.22) !important;
+}
+
+.stat-left-flex-m {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* 🎨 SCREENSHOT MATING: Colored Solid Bottom Borders */
+.stat-node-card-m::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 0 0 20px 24px;
+}
+.border-purple-m::after { background: #7c3aed; }
+.border-blue-m::after   { background: #0052ff; }
+.border-orange-m::after { background: #ea580c; }
+.border-green-m::after  { background: #10b981; }
+
+/* Icon Circular Aura Design */
+.stat-icon-glow-m {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.stat-icon-glow-m.glow-purple-m { background: #f3e8ff; }
+.stat-icon-glow-m.glow-blue-m   { background: #e0f2fe; }
+.stat-icon-glow-m.glow-orange-m { background: #ffedd5; }
+.stat-icon-glow-m.glow-green-m  { background: #d1fae5; }
+
+.currency-symbol-m {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0052ff;
+}
+
+/* ==========================================================================
+   ⚡ ABSOLUTE TEXT COLOR FIX: SHARP COUNTER COLORS ON ANIMATION
+   ========================================================================== */
+.stat-info-m h3 {
+  font-family: 'Sora', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  display: inline-block !important;
+  
+  /* लाइव स्क्रिप्ट रिफ्लेक्शन के लिए बैकग्राउंड ब्लॉक्स क्लीनर */
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  text-fill-color: initial !important;
+}
+
+/* 🟣 Card 1: Sharp Purple Text */
+.border-purple-m .stat-info-m h3 {
+  color: #7c3aed !important;
+  filter: drop-shadow(0 2px 4px rgba(124, 58, 237, 0.1));
+}
+
+/* 🔵 Card 2: Sharp Tech Blue Text */
+.border-blue-m .stat-info-m h3 {
+  color: #0052ff !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 82, 255, 0.1));
+}
+
+/* 🟠 Card 3: Sharp Vivid Orange Text */
+.border-orange-m .stat-info-m h3 {
+  color: #ea580c !important;
+  filter: drop-shadow(0 2px 4px rgba(234, 88, 12, 0.1));
+}
+
+/* 🟢 Card 4: Sharp Emerald Green Text */
+.border-green-m .stat-info-m h3 {
+  color: #10b981 !important;
+  filter: drop-shadow(0 2px 4px rgba(16, 185, 129, 0.1));
+}
+
+.stat-info-m p {
+  font-size: 11.5px;
+  color: #64748b;
+  font-weight: 600;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+/* 📉 Right End Decorative Line Graphics Icons */
+.card-right-decor-icon-m {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.25;
+  transition: opacity 0.3s ease;
+}
+.stat-node-card-m:hover .card-right-decor-icon-m {
+  opacity: 0.8;
+}
+
+.decor-purple-m { color: #7c3aed; }
+.decor-blue-m   { color: #0052ff; }
+.decor-orange-m { color: #ea580c; }
+.decor-green-m  { color: #10b981; }
+
+/* ==========================================================================
+     📱 MOBILE FLUID BREAKPOINTS VIEWPORTS
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .stats-grid-quad-m {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-grid-quad-m {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  .stat-node-card-m {
+    padding: 24px 20px;
+  }
+}
+
+/* owner about *****************************************************************/
+/* ==========================================================================
+   🔷 ENTERPRISE OWNER MASTER ABOUT STYLES (-o Unique Suffix Protection)
+   ========================================================================== */
+#owner-profile-desk-o {
+  padding: 90px 0;
+  background: #ffffff;
+  width: 100%;
+  position: relative;
+  border-top: 1px solid rgba(0, 82, 255, 0.05);
+}
+
+.owner-main-flex-layout-o {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr; /* इमेज बॉक्स और टेक्स्ट का परफेक्ट अनुपात */
+  gap: 56px;
+  align-items: start;
+  width: 100%;
+}
+
+/* 📸 1. LEFT SIDE - PORTRAIT FRAME WITH GRADIENT BACKGROUND */
+.owner-visual-frame-o {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.owner-image-mask-o {
+  width: 100%;
+  max-width: 420px;
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  /* स्क्रीनशॉट जैसा प्रीमियम सॉफ्ट पर्पल/टेक-ब्लू बैकग्राउंड ग्रैडिएंट */
+  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 50%, #818cf8 100%);
+  box-shadow: var(--card-shadow-default);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.founder-photo-o {
+  width: 95%;
+  height: 95%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ✍️ Cursive Elegant Signature Font Hook Setup */
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
+.owner-signature-row-o {
+  font-family: 'Alex Brush', cursive;
+  font-size: 38px;
+  color: #07132c;
+  margin-top: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* ✍️ 2. RIGHT SIDE - NARRATIVE TEXT ARCHITECTURE */
+.owner-eyebrow-o {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #7c3aed; /* ब्यूटीफुल डीप पर्पल टोन */
+  margin-bottom: 12px;
+}
+
+.owner-heading-o {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #07132c;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.story-paragraph-o {
+  font-size: 14.5px;
+  color: #5c6b82;
+  line-height: 1.65;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+/* 🌟 SCREENSHOT EXCLUSIVITY: Yellow Highlight Quote Block Box */
+.story-highlight-quote-o {
+  background: #fffae6; /* सॉफ्ट वार्म हाइलाइट बैकग्राउंड */
+  border-left: 3px solid #eab308; /* सॉलिड गोल्ड इंडिकेटर लाइन */
+  color: #1e293b;
+  padding: 14px 20px;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.6;
+  border-radius: 0 8px 8px 0;
+  margin: 20px 0;
+}
+
+/* 📊 3. BOTTOM SIDE - TRIPLE-COLUMN STATISTICS STRIP LAYOUT */
+.owner-metrics-footer-panel-o {
+  margin-top: 56px;
+  border-top: 1px solid #edf2f7;
+  padding-top: 32px;
+  width: 100%;
+}
+
+.metrics-triple-grid-o {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) !important;
+  width: 100%;
+}
+
+.metric-triple-node-o {
+  text-align: center;
+  position: relative;
+}
+
+/* वर्टिकल सेपरेटर लाइन्स हर कॉलम के बीच में */
+.metric-triple-node-o:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: #e2e8f0;
+}
+
+.owner-live-counter-o {
+  font-family: 'Sora', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #07132c;
+  line-height: 1.1;
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-triple-node-o p {
+  font-size: 13.5px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   📱 SYSTEM FLUID BREAKPOINT RESPONSIVENESS OVERRIDES
+   ========================================================================== */
+@media (max-width: 950px) {
+  .owner-main-flex-layout-o {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .owner-image-mask-o {
+    height: 320px;
+  }
+  .metrics-triple-grid-o {
+    grid-template-columns: 1fr !important;
+    gap: 24px 0;
+  }
+  .metric-triple-node-o:not(:last-child)::after {
+    display: none !important; /* मोबाइल पर सेपरेटर्स हाइड */
+  }
+}
+
+
+
+/* brands section-************************************************************  */
+/* ==========================================================================
+   🤝 CENTRIC BRAND ECOSYSTEM GRID SYSTEM STYLES (-e Unique Suffix)
+   ========================================================================== */
+#brand-ecosystem-shield-e {
+  padding: 90px 0;
+  background: var(--bg); /* आपकी लाइट थीम का मुख्य बैकग्राउंड */
+  width: 100%;
+  position: relative;
+  border-top: 1px solid rgba(0, 82, 255, 0.04);
+}
+
+/* 🌐 Main Balanced 3-Column Core Grid Shell */
+.ecosystem-master-board-e {
+  display: grid;
+  grid-template-columns: 1fr 340px 1fr !important; /* लेफ्ट विंग | फ़ाउंडर सेंटर | राइट विंग */
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+  margin-top: 24px;
+}
+
+/* 🔷 SIDE WINGS: 2-Column Grid Rows layout for 6 Logos */
+.logos-side-wing-e {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 20px;
+  width: 100%;
+}
+
+/* ब्रैंड लोगोज़ पाड्स - प्रीमियम क्लीन लाइट ग्लासमोर्फिज्म लुक */
+.partner-logo-pad-e {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 82, 255, 0.06);
+  border-radius: 16px;
+  padding: 16px;
+  height: 84px; /* सभी बॉक्सेस की हाइट एक जैसी रखने के लिए फिक्स ग्रिड */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--card-shadow-default);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 🎯 इमेजेस का साइज़ और कंटेनमेंट फिक्स ताकि लोगो फटे या बिखरे नहीं */
+.ecosystem-img-asset-e {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* होवर करने पर लोगो पाड्स हल्के से उठेंगे और कलर ब्राइट होगा */
+.partner-logo-pad-e:hover {
+  transform: translateY(-5px) scale(1.03);
+  border-color: #0052ff;
+  box-shadow: var(--card-shadow-active);
+}
+
+/* 📸 CENTER PILLAR: FOUNDER EMBED CARD CONFIG */
+.founder-center-pillar-e {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.founder-card-glow-pad-e {
+  background: #ffffff;
+  border: 1px solid rgba(0, 82, 255, 0.08);
+  border-radius: 24px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 25px 55px rgba(0, 82, 255, 0.06);
+  text-align: center;
+  position: relative;
+  transition: transform 0.4s ease;
+}
+.founder-card-glow-pad-e:hover {
+  transform: scale(1.02);
+}
+
+.founder-image-wrapper-e {
+  width: 100%;
+  height: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.founder-photo-asset-e {
+  width: 90%;
+  height: 95%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Lower Data Tag for portrait board */
+.founder-meta-badge-e {
+  margin-top: 16px;
+}
+
+.founder-meta-badge-e h4 {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.founder-meta-badge-e p {
+  font-size: 12px;
+  color: #0052ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   📱 FLUID RESPONSIVE Safety Breakpoints Matrix
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .ecosystem-master-board-e {
+    grid-template-columns: 1fr !important;
+    gap: 36px;
+  }
+  .founder-center-pillar-e {
+    order: 1; /* मोबाइल पर फ़ाउंडर सबसे पहले दिखेगा */
+    max-width: 340px;
+    margin: 0 auto;
+  }
+  .left-wing-e {
+    order: 2;
+  }
+  .right-wing-e {
+    order: 3;
+  }
+}
+
+@media (max-width: 550px) {
+  .logos-side-wing-e {
+    grid-template-columns: repeat(2, 1fr) !important; /* छोटे मोबाइल पर भी सुंदर 2-कॉलम ग्रिड बना रहेगा */
+    gap: 14px;
+  }
+  .partner-logo-pad-e {
+    height: 74px;
+  }
+}
+/* client suss */
+
+/* ==========================================================================
+   🎭 STRATEGIC CAROUSEL DYNAMIC COLOR THEMES & SHADOWS (-s Unique Suffix)
+   ========================================================================== */
+
+/* 🔮 Base Container Overrides for Custom Glow */
+.interview-carousel-wrapper.enterprise-glow-shield {
+  background: #ffffff;
+  border-radius: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  transition: box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 🟣 1. PURPLE THEME: Case Study 01 (Luxury & Deep Tone) */
+.interview-slide.theme-purple-s .client-meta { color: #7c3aed !important; }
+.interview-slide.theme-purple-s .client-tag-badge { background: #7c3aed !important; color: #ffffff; }
+.interview-slide.theme-purple-s .mini-stat-card h3 { color: #7c3aed !important; }
+.interview-slide.theme-purple-s .stat-icon-aura { background: rgba(124, 58, 237, 0.08) !important; color: #7c3aed !important; }
+
+/* जब पर्पल स्लाइड एक्टिव होगी तब पूरे कैरोसेल बॉक्स को सॉफ्ट पर्पल ग्लो मिलेगा */
+.interview-carousel-wrapper:has(.interview-slide.active.theme-purple-s) {
+  /* box-shadow: 0 30px 70px rgba(124, 58, 237, 0.12), 0 5px 15px rgba(0, 0, 0, 0.01) !important; */
+      box-shadow: 0 30px 70px rgb(124 58 237 / 46%), 0 5px 15px rgba(0, 0, 0, 0.01) !important;
+}
+
+/* 🔵 2. BLUE THEME: Case Study 02 (Corporate Tech Blue) */
+.interview-slide.theme-blue-s .client-meta { color: #0052ff !important; }
+.interview-slide.theme-blue-s .client-tag-badge { background: var(--neon-pink, #0052ff) !important; color: #ffffff; }
+.interview-slide.theme-blue-s .mini-stat-card h3 { color: #0052ff !important; }
+.interview-slide.theme-blue-s .stat-icon-aura { background: rgba(0, 82, 255, 0.08) !important; color: #0052ff !important; svg { stroke: #0052ff; } }
+
+/* जब ब्लू स्लाइड एक्टिव होगी तब पूरे कैरोसेल बॉक्स को सॉफ्ट ब्लू ग्लो मिलेगा */
+.interview-carousel-wrapper:has(.interview-slide.active.theme-blue-s) {
+  /* box-shadow: 0 30px 70px rgba(0, 82, 255, 0.12), 0 5px 15px rgba(0, 0, 0, 0.01) !important; */
+      box-shadow: 0 30px 70px rgb(0 82 255 / 32%), 0 5px 15px rgba(0, 0, 0, 0.01) !important;
+}
+
+/* 🟠 3. ORANGE THEME: Case Study 03 (Vivid ROAS Orange) */
+.interview-slide.theme-orange-s .client-meta { color: #ea580c !important; }
+.interview-slide.theme-orange-s .client-tag-badge { background: #ea580c !important; color: #ffffff; }
+.interview-slide.theme-orange-s .mini-stat-card h3 { color: #ea580c !important; }
+.interview-slide.theme-orange-s .stat-icon-aura { background: rgba(234, 88, 12, 0.08) !important; color: #ea580c !important; }
+
+/* जब ऑरेंज स्लाइड एक्टिव होगी तब पूरे कैरोसेल बॉक्स को सॉफ्ट ऑरेंज ग्लो मिलेगा */
+.interview-carousel-wrapper:has(.interview-slide.active.theme-orange-s) {
+  /* box-shadow: 0 30px 70px rgba(234, 88, 12, 0.12), 0 5px 15px rgba(0, 0, 0, 0.01) !important; */
+box-shadow: 0 30px 70px rgb(234 88 12 / 30%), 0 5px 15px rgba(0, 0, 0, 0.01) !important;}
+
+/* 🛠️ Mini Stat Cards Inner Alignment Core Fixes */
+.mini-stat-card {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid rgba(0, 0, 0, 0.03) !important;
+  border-radius: 16px !important;
+  padding: 16px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-icon-aura {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.mini-stat-card h3 {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 4px 0 2px;
+}
+
+.mini-stat-card p {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* testimonial  */
+/* ==========================================================================
+   🎡 WHATSAPP CHAT ZIG-ZAG CAROUSEL STYLES
+   ========================================================================== */
+.testimonial-carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding: 80px 0; 
+  position: relative;
+  background: transparent;
+  cursor: default !important; /* कर्सर को हमेशा नॉर्मल रखेगा */
+}
+
+.testimonial-track {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  animation: scrollTestimonials 25s linear infinite;
+  cursor: default !important;
+}
+
+.testimonial-carousel-wrapper:hover .testimonial-track {
+  animation-play-state: paused;
+}
+
+.wp-chat-card {
+  flex-shrink: 0;
+  width: 300px;
+  background: #efeae2;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.05);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  cursor: default !important;
+}
+
+.wp-chat-header {
+  background: #075e54;
+  color: #ffffff;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.wp-chat-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.wp-chat-status {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+.wp-chat-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+  background-size: contain;
+}
+
+.wp-msg {
+  max-width: 85%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.wp-msg.received {
+  background: #ffffff;
+  align-self: flex-start;
+  border-top-left-radius: 0;
+  color: #0a0f18;
+}
+
+.wp-msg.sent {
+  background: #d9fdd3;
+  align-self: flex-end;
+  border-top-right-radius: 0;
+  color: #0a0f18;
+}
+
+/* 📐 100% ORIGINAL ZIG-ZAG FORMAT ANGLES */
+.card-angle-left { transform: rotate(-4deg); border-bottom: 4px solid #10b981; }
+.card-angle-right { transform: rotate(5deg); border-bottom: 4px solid #0044ff; }
+.card-angle-left-subtle { transform: rotate(-2deg); border-bottom: 4px solid #8b5cf6; }
+.card-angle-right-subtle { transform: rotate(3deg); border-bottom: 4px solid #f59e0b; }
+
+/* 🚀 EXTRA POP-UP HOVER EFFECT (Straightens & Scales Big) */
+.wp-chat-card:hover {
+  transform: rotate(0deg) translateY(-35px) scale(1.28) !important; 
+  z-index: 9999 !important; 
+  box-shadow: 0 35px 60px rgba(0, 82, 255, 0.25); 
+  border: 1px solid #0044ff;
+}
+
+@keyframes scrollTestimonials {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-340px * 4)); } /* 300px width + 40px gap */
+}
+
+/* 📱 Mobile Responsive Overrides */
+@media(max-width: 768px) {
+  .testimonial-track { gap: 20px; }
+  .wp-chat-card { transform: none !important; }
+  .wp-chat-card:hover { transform: scale(1.05) translateY(-5px) !important; }
+  @keyframes scrollTestimonials {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-320px * 4)); }
+  }
+}
+
+/*responsive navbar logo section  */
+/* ==========================================================================
+   📱 🚀 MOBILE & TABLET NAVBAR FULL-WIDTH EDGE LOCK (NO ROUND, NO TOP GAP)
+   ========================================================================== */
+@media (max-width: 900px) {
+  
+  /* 1. हेडर को सबसे ऊपर चिपकाएं और एक्स्ट्रा टॉप गैप हटाएं */
+  header {
+    top: 0 !important; 
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+  }
+
+  /* 2. नेविगेशन बार के राउंड कॉर्नर्स खत्म करके उसे फ्लैट और फुल-विड्थ करें */
+  header nav {
+    border-radius: 0 !important; 
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 14px 20px !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    box-shadow: 0 4px 20px rgba(0, 82, 255, 0.05) !important;
+    animation: none !important; /* मोबाइल पर अनचाहे एनीमेशन ग्लिच ब्लॉक */
+  }
+
+  /* 3. स्क्रॉल होने पर भी मोबाइल लेआउट फ्लैट ही लॉक रहेगा */
+  header.scrolled {
+    top: 0 !important;
+  }
+  header.scrolled nav {
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    box-shadow: 0 10px 30px rgba(0, 82, 255, 0.08) !important;
+  }
+
+  /* मोबाइल ड्रॉपडाउन लिंक्स पैड अलाइनमेंट एडजस्टमेंट */
+  .nav-links {
+    top: 100% !important;
+    border-radius: 0 0 20px 24px !important; /* केवल नीचे के कोने राउंड रहेंगे ताकि ड्रॉपडाउन सुंदर लगे */
+    border-left: none !important;
+    border-right: none !important;
+  }
+}
+
+/* responsive client success section  */
+/* ==========================================================================
+   === 🎭 TESTED FINAL CAROUSEL RESPONSIVE ENGINE (FULL WIDTH BREAK) ===
+   ========================================================================== */
+
+/* 1. बेस लेवल 4 कार्ड्स सिंगल लाइन लॉक (डेस्कटॉप + ऑल स्क्रीन्स) */
+.slide-metrics-bento {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important; /* हमेशा 1 लाइन में 4 कार्ड */
+  gap: 16px !important;
+  margin-top: 36px !important;
+  width: 100% !important; /* 🚀 नीचे पूरे ब्लॉक में 100% फुल विड्थ */
+}
+
+.mini-stat-card {
+  background: #ffffff !important;
+  border: 1px solid #f1f5f9 !important;
+  border-radius: 12px !important;
+  padding: 16px 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 110px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.01) !important;
+}
+
+/* 📱 2. TABLET & MOBILE UNIFIED ENGINE (max-width: 1024px) */
+@media (min-width: 1024px) {
+  
+  /* 🎯 जादुई फिक्स: मुख्य लेआउट को फ्लेक्स कॉलम में बदला ताकि कार्ड्स नीचे आ सकें */
+  .interview-flex-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important; /* गैप जीरो किया ताकि इनर पैडिंग काम करे */
+    width: 100% !important;
+  }
+
+  /* 📸 इमेज और टेक्स्ट को अगल-बगल (50% - 50%) सेट करने के लिए डिस्प्ले ग्रिड हुक */
+  .interview-flex-layout {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* इमेज 50% | टेक्स्ट 50% */
+    gap: 32px !important;
+  }
+
+  /* इमेज अलाइनमेंट लॉक्स */
+  .side-grid-image-frame {
+    grid-column: 1 !important;
+    width: 100% !important;
+    height: 320px !important;
+    display: block !important;
+  }
+  
+  /* टेक्स्ट ब्लॉक अलाइनमेंट लॉक्स */
+  .side-grid-text-block {
+    grid-column: 2 !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  /* 🎯 4 स्टैट्स कार्ड्स: अब यह सिर्फ राइट साइड के नीचे नहीं दबेगा, बल्कि इमेज और टेक्स्ट दोनों के नीचे पूरे 100% में फैलेगा */
+  .slide-metrics-bento {
+    grid-column: 1 / span 2 !important; /* 🚀 मैजिक स्ट्रिप: दोनों कॉलम के नीचे फुल 100% विड्थ लॉक */
+    display: grid !important; 
+    grid-template-columns: repeat(4, 1fr) !important; /* वापस एक लाइन में 4 कार्ड्स */
+    width: 100% !important;
+    margin-top: 36px !important;
+  }
+
+  .mini-stat-card h3 {
+    font-size: 20px !important;
+  }
+}
+
+/* 📲 3. MOBILE REAL-TIME FINE TUNING (max-width: 768px) */
+/* @media (min-width: 750px)and(max-width: 990px) {
+  .enterprise-glow-shield {
+    padding: 24px 16px !important;
+    border-radius: 20px !important;
+  }
+
+  .interview-flex-layout {
+    gap: 16px !important;
+  }
+
+  .side-grid-image-frame {
+    height: 180px !important; 
+    border-radius: 12px !important;
+  }
+
+  .slide-title {
+    font-size: 16px !important; 
+    line-height: 1.3 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .slide-desc {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .client-meta {
+    font-size: 9px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .client-tag-badge {
+    padding: 3px 6px !important;
+    font-size: 8px !important;
+    top: 8px !important;
+    left: 8px !important;
+  }
+
+  .slide-metrics-bento {
+    gap: 6px !important;
+    margin-top: 20px !important;
+  }
+
+  .mini-stat-card {
+    padding: 8px 4px !important;
+    min-height: 80px !important;
+    border-radius: 8px !important;
+  }
+
+  .stat-icon-aura {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 9px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .mini-stat-card h3 {
+    font-size: 12.5px !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .mini-stat-card p {
+    font-size: 8px !important;
+    line-height: 1.1 !important;
+    white-space: normal !important;
+  }
+} */
+
+
+/* ==========================================================================
+   📱 2. TABLET TARGET EXPANSION SHIELD (Fixed Syntax & Breakpoint Grid)
+   ========================================================================== */
+@media (min-width: 701px) and (max-width: 1024px) {
+  
+  /* मुख्य स्लाइड कंटेनर को ग्रिड में बांधना */
+  .interview-flex-layout {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* लेफ्ट में 50% इमेज, राइट में 50% टेक्स्ट */
+    gap: 20px !important; /* टैबलेट के लिए एकदम बैलेंस्ड गैप */
+    width: 100% !important;
+  }
+
+  /* इमेज को पहले कॉलम में फिक्स करना */
+  .side-grid-image-frame {
+    grid-column: 1 !important;
+    width: 100% !important;
+    height: 322px !important;
+    
+    /* 🚀 जादुई फ्लेक्स सेंटर लॉक */
+    display: flex !important;
+    align-items: center !important;     /* वर्टिकली सेंटर (Top-to-Bottom) */
+    justify-content: center !important;  /* हॉरिजॉन्टली सेंटर (Left-to-Right) */
+    
+    background: #000000; /* अगर इमेज छोटी हो तो बैकग्राउंड गैप भरने के लिए (ऑप्शनल) */
+    overflow: hidden !important;
+    border-radius: 14px !important;
+  }
+
+  .side-grid-image-frame img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* इमेज को बिना स्ट्रेच किए पूरे फ्रेम में सेंटर रखेगा */
+  }
+  
+  /* टेक्स्ट ब्लॉक को दूसरे कॉलम में फिक्स करना */
+  .side-grid-text-block {
+    grid-column: 2 !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  /* 🎯 चारों स्टैट्स कार्ड्स: अब यह इमेज और टेक्स्ट दोनों के ठीक नीचे 100% फुल विड्थ में आएंगे */
+  .slide-metrics-bento {
+    grid-column: 1 / span 2 !important; /* दोनों कॉलम के नीचे फुल विड्थ ब्लॉक */
+    display: grid !important; 
+    grid-template-columns: repeat(4, 1fr) !important; /* सिंगल लाइन में 4 कार्ड्स */
+    width: 100% !important;
+    margin-top: 24px !important;
+    gap: 12px !important;
+  }
+
+  /* टैबलेट के हिसाब से फोंट साइज़ और पैडिंग ट्यूनिंग */
+  .enterprise-glow-shield {
+    padding: 24px 16px !important;
+    border-radius: 20px !important;
+  }
+
+  .slide-title {
+    font-size: 20px !important; 
+    line-height: 1.3 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .slide-desc {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+  }
+
+  .mini-stat-card {
+    padding: 12px 6px !important;
+    min-height: 100px !important;
+    border-radius: 10px !important;
+  }
+
+  .mini-stat-card h3 {
+    font-size: 17px !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  .mini-stat-card p {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* ==========================================================================
+   💻 🔄 LAPTOP-TO-TABLET SYNC ENGINE (Exact Desktop Layout Alignment)
+   ========================================================================== */
+@media (min-width: 701px) and (max-width: 1024px) {
+
+  /* ==========================================================================
+     🚀 1. HERO SECTION TABLET RESPONSIVE FIX
+     ========================================================================== */
+  .hero-grid {
+    display: grid !important;
+    /* लैपटाॅप की तरह साइड-बाय-साइड 2-कॉलम लेआउट लॉक किया */
+    grid-template-columns: 1.15fr 0.85fr !important; 
+    gap: 24px !important;
+    text-align: left !important; /* लैपटॉप की तरह लेफ्ट अलाइन */
+    align-items: center !important;
+  }
+
+  .hero-inner {
+    text-align: left !important;
+  }
+
+  /* ✍️ हेडिंग और डिस्क्रिप्शन की फोंट साइज को कंप्रेस किया */
+  .hero h1 {
+    font-size: clamp(28px, 4vw, 38px) !important; 
+    line-height: 1.2 !important;
+    margin: 6px 0 16px !important;
+  }
+
+  .hero p {
+    font-size: 14px !important; /* पैराग्राफ साइज ऑप्टिमाइज्ड */
+    margin: 0 !important;
+    line-height: 1.5 !important;
+    max-width: 100% !important;
+  }
+
+  .hero-actions {
+    justify-content: flex-start !important; /* बटन्स को लेफ्ट में रखा */
+    margin: 24px 0 32px !important;
+    gap: 12px !important;
+  }
+
+  .hero-happy-clients-pod {
+    justify-content: flex-start !important;
+  }
+
+  /* रोबोट विजुअल फ्रेम साइजिंग */
+  .hero-visual {
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: row !important; /* मोबाइल ओवरराइड को लैपटॉप जैसा किया */
+    position: relative !important;
+  }
+
+  .robo-image {
+    max-width: 100% !important;
+    width: 220px !important; /* टैबलेट के हिसाब से रोबोट छोटा किया */
+    height: auto !important;
+  }
+
+  /* तैरने वाले बैज लैपटॉप की तरह एब्सोल्यूट लॉक किए */
+  .float-badge {
+    position: absolute !important;
+    padding: 8px 14px !important;
+    font-size: 11.5px !important;
+  }
+  .float-badge.b1 { top: 15% !important; right: -2vh !important; }
+  .float-badge.b2 { bottom: 10% !important; left: -2vh !important; }
+
+
+  /* ==========================================================================
+     📊 2. ROI SECTION TABLET RESPONSIVE FIX
+     ========================================================================== */
+  .roas-impact-showcase {
+    padding: 32px 24px !important;
+  }
+
+  .roas-header h3 {
+    font-size: 20px !important; /* हेडिंग साइज कम की */
+  }
+
+  /* 🎯 लैपटॉप की तरह साइड-बाय-साइड 2-कॉलम डैशबोर्ड ग्रिड लॉक किया */
+  .roas-dual-display-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; 
+    gap: 20px !important;
+    margin-bottom: 32px !important;
+  }
+
+  .dashboard-mock-card {
+    padding: 16px !important; /* इनर पैडिंग बैलेंस्ड */
+  }
+
+  /* लाइव डैशबोर्ड का इनर कंपोनेंट अलाइनमेंट */
+  .mock-dashboard-content {
+    gap: 12px !important;
+    min-height: 200px !important;
+  }
+
+  .mock-metric-sidebar {
+    width: 80px !important;
+    gap: 10px !important;
+  }
+
+  .metric-mini-box {
+    padding: 6px 8px !important;
+  }
+
+  .m-val {
+    font-size: 13px !important;
+  }
+
+  /* चार्ट एरिया साइजिंग */
+  .mock-main-chart-area {
+    height: 170px !important;
+    padding: 10px !important;
+  }
+
+  .chart-floating-badge {
+    font-size: 10px !important;
+    padding: 3px 8px !important;
+  }
+
+  .svg-graph-canvas {
+    height: 90px !important;
+  }
+
+  /* राइट साइड प्रोग्रेस बार पैनल */
+  .mock-right-matrix-panel {
+    width: 110px !important;
+    gap: 10px !important;
+  }
+
+  .p-label-flex {
+    font-size: 10px !important;
+  }
+
+  /* फनल ग्राफिक अलाइनमेंट लैपटॉप डिज़ाइन सिंक */
+  .funnel-graphics-container {
+    padding: 5px 0 !important;
+  }
+
+  .funnel-segment {
+    height: 30px !important;
+    font-size: 11px !important;
+  }
+  .funnel-segment.layer-top { width: 160px !important; }
+  .funnel-segment.layer-mid-high { width: 130px !important; }
+  .funnel-segment.layer-mid-low { width: 100px !important; }
+  .funnel-segment.layer-bottom-neck { width: 70px !important; height: 26px !important; }
+
+  .funnel-label-right {
+    font-size: 9.5px !important;
+  }
+
+  /* नीचे का स्लाइडर और कंट्रोलर रो */
+  .roas-interactive-controller-row {
+    flex-direction: row !important; /* मोबाइल का वर्टिकल स्टैक हटाया */
+    gap: 24px !important;
+  }
+
+  .state-transition-arrow {
+    transform: none !important; /* एरो राइट साइड ही पॉइंट करेगा */
+    font-size: 22px !important;
+  }
+
+  .slider-control-wrapper {
+    width: 260px !important;
+  }
+
+  .gradient-slider-track {
+    height: 34px !important;
+  }
+
+  .slider-handle-dot {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .gradient-slider-track.after-engine-active .slider-handle-dot {
+    transform: translateX(226px) !important;
+  }
+
+  .state-pill {
+    padding: 6px 14px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* ROI responsive */
+/* ==========================================================================
+   📊 ROI ENGINE TABLET FIX - PURE FLEX LAPTOP REPLICATION (ROW MODE)
+   ========================================================================== */
+@media (min-width: 701px) and (max-width: 1024px) {
+
+  /* 🎯 1. मुख्य आउटर कंटेनर को लैपटॉप की तरह रो (Row) लेआउट में फ़ोर्स लॉक करना */
+  .roas-dual-display-grid {
+    display: flex !important;
+    flex-direction: row !important; /* लैपटॉप की तरह साइड-बाय-साइड लेआउट */
+    gap: 20px !important;
+    width: 100% !important;
+    margin-bottom: 32px !important;
+  }
+
+  /* 🎯 2. दोनों कार्ड्स को बराबर 50% चौड़ाई (Width) देना ताकि कोई नीचे न गिरे */
+  .roas-dual-display-grid .roas-view-panel,
+  .roas-dual-display-grid .dashboard-mock-card {
+    flex: 1 !important;
+    width: 50% !important; /* दोनों को परफेक्ट आधा स्पेस */
+    min-width: 0 !important; /* ओवरफ्लो ग्लिच गार्ड */
+    height: auto !important;
+  }
+
+  /* 🎯 3. इनर डैशबोर्ड का साइड-बाय-साइड लेआउट स्थिरता */
+  .mock-dashboard-content {
+    display: flex !important;
+    flex-direction: row !important; /* इनर कंपोनेंट्स भी रो में रहेंगे */
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    min-height: 200px !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  /* लेफ्ट साइडबार नोड्स */
+  .mock-metric-sidebar {
+    width: 85px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .metric-mini-box {
+    padding: 8px !important;
+    width: 100% !important;
+  }
+
+  /* 📈 सेंट्रल ग्राफ़ फ्रेम स्केलिंग */
+  .mock-main-chart-area {
+    flex: 1 !important;
+    height: 180px !important;
+    padding: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    min-width: 0 !important;
+  }
+
+  .svg-graph-canvas {
+    height: 100px !important;
+    width: 100% !important;
+  }
+
+  /* राइट साइड डेटा प्रोग्रेस पैनल */
+  .mock-right-matrix-panel {
+    width: 120px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* 🔺 फनल ग्राफिक अलाइनमेंट (Exact Laptop Replication) */
+  .funnel-graphics-container {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 8px 0 !important;
+    min-width: 0 !important;
+  }
+
+  .funnel-segment {
+    height: 32px !important;
+    font-size: 11px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .funnel-segment.layer-top { width: 155px !important; }
+  .funnel-segment.layer-mid-high { width: 125px !important; }
+  .funnel-segment.layer-mid-low { width: 95px !important; }
+  .funnel-segment.layer-bottom-neck { width: 65px !important; height: 26px !important; }
+
+  /* फनल के दाईं तरफ लिखे टेक्स्ट का अलाइनमेंट फिक्स */
+  .funnel-label-right {
+    font-size: 9.5px !important;
+    left: 104% !important;
+  }
+
+  /* 🎛️ नीचे वाला कंट्रोलर रो - स्ट्रेट हॉरिजॉन्टल व्यू लॉक */
+  .roas-interactive-controller-row {
+    display: flex !important;
+    flex-direction: row !important; /* वर्टिकल होने से रोकना */
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 32px !important;
+    margin-top: 24px !important;
+    width: 100% !important;
+  }
+
+  .slider-control-wrapper {
+    width: 280px !important;
+    margin: 0 !important;
+  }
+
+  .gradient-slider-track {
+    height: 36px !important;
+  }
+
+  .slider-handle-dot {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .gradient-slider-track.after-engine-active .slider-handle-dot {
+    transform: translateX(244px) !important;
+  }
+
+  .state-transition-arrow {
+    transform: none !important; /* एरो सीधा (Horizontal) रहेगा */
+    font-size: 24px !important;
+    display: block !important;
+  }
+
+  .status-badge-engine {
+    margin: 0 !important;
+  }
+}
+
+/* mobile bottom menu bar  */
+/* ==========================================================================
+   📱 FUTURISTIC APP-LIKE BOTTOM MENU NAVIGATION BAR
+   ========================================================================== */
+
+/* 🎯 डिफ़ॉल्ट रूप से बड़ी स्क्रीन्स (लैपटॉप, डेस्कटॉप और टैबलेट) पर इसे पूरी तरह छुपाएं */
+.mobile-app-bottom-nav {
+  display: none !important;
+}
+
+/* 📲 केवल मोबाइल व्यूपोर्ट पर एक्टिव करने का अल्टीमेट मैजिक */
+@media (max-width: 700px) {
+  
+  .mobile-app-bottom-nav {
+    display: flex !important; /* मोबाइल पर फ्लेक्स रो एक्टिव */
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 68px !important;
+    
+    /* Premium Glassmorphism Architecture */
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    
+    /* क्लीन टॉप आउटलाइन और ड्रॉप शैडो */
+    border-top: 1px solid rgba(0, 82, 255, 0.08) !important;
+    box-shadow: 0 -8px 30px rgba(0, 82, 255, 0.06) !important;
+    
+    align-items: center !important;
+    justify-content: space-around !important;
+    padding: 0 10px !important;
+    z-index: 999999 !important; /* हमेशा सभी लेयर्स के ऊपर तैरता रहेगा */
+
+  }
+  .mobile-app-bottom-nav .app-nav-item {
+    width: 20% !important; /* 100% / 5 items = 20% Each */
+    font-size: 10px !important; /* छोटे मोबाइल स्क्रीन्स के लिए क्लीन टेक्स्ट साइज़ */
+  }
+
+  /* इनर बटन्स कोर डिज़ाइन */
+  .app-nav-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #5c6b82 !important; /* म्यूटेड ब्लू-ग्रे टेक्स्ट */
+    text-decoration: none !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    gap: 4px !important;
+    width: 22% !important;
+    height: 100% !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .app-nav-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: transform 0.2s ease !important;
+  }
+
+  /* Active/Hover State Logic (सिग्नेचर साइबर ब्लू कलर) */
+  .app-nav-item.active,
+  .app-nav-item:hover {
+    color: #0052ff !important;
+  }
+  
+  .app-nav-item.active .app-nav-icon,
+  .app-nav-item:hover .app-nav-icon {
+    transform: translateY(-2px) scale(1.05) !important;
+  }
+
+  /* 🟢 व्हाट्सएप के लिए वाइब्रेंट टोन */
+  .app-nav-item.wa-accent-btn:hover {
+    color: #25d366 !important;
+  }
+
+  /* 📞 कॉल बटन के लिए डार्क नेवी-ब्लू हाइलाइट */
+  .app-nav-item.call-accent-btn:hover {
+    color: #0f172a !important;
+  }
+
+  /* 🚨 सेफ्टी पैडिंग: वेबसाइट के मुख्य फुटर या कंटेंट को इस बार के पीछे छिपने से रोकने के लिए */
+  body {
+    padding-bottom: 72px !important; /* नीचे एक्स्ट्रा ब्रीदिंग स्पेस दिया ताकि बार कंटेंट को न काटे */
+  }
+}
+
+/* hero section right image and logo coursel and hide whatsapp icon  */
+/* ==========================================================================
+   📱 MOBILE VIEW DETAILED TUNING ENGINE (max-width: 700px)
+   ========================================================================== */
+@media (max-width: 700px) {
+
+  /* 🤖 1. चैटबॉट को बॉटम बार के ऊपर खिसकाना */
+  .chatbot-wrapper {
+    bottom: 84px !important; /* बॉटम बार की 68px हाइट के ऊपर सुरक्षित स्पेस */
+    right: 16px !important;
+  }
+  
+  .chat-window {
+    bottom: 0 !important; /* चैट विंडो खुलने पर परफेक्ट अलाइनमेंट */
+  }
+
+  /* 💬 2. दाईं तरफ वाले वर्टिकल व्हाट्सएप फ्लोटिंग बार को मोबाइल पर हाइड करना */
+  .sticky-whatsapp-trigger-right {
+    display: none !important; /* क्योंकि यह अब नीचे बॉटम बार में आ चुका है */
+  }
+
+  /* 🤖 3. हीरो सेक्शन से रोबोट इमेज और फ्लोटिंग बैजेस को हटाना */
+  .hero-visual,
+  .robo-image,
+  .float-badge,
+  .float-badge.b1,
+  .float-badge.b2,
+  .robo-glow {
+    display: none !important; /* मोबाइल पर अब सिर्फ हेडिंग, डिस्क्रिप्शन और बटन्स दिखेंगे */
+  }
+
+  /* रोबोट हटने के बाद हीरो ग्रिड को पूरी विड्थ में सिंक करना */
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+
+  /* 🎡 4. क्लाइंट लोगो कैरोसेल (Logo Carousel) के आइकॉन्स को छोटा करना */
+  .clients-carousel-section {
+    padding: 12px 0 !important; /* कैरोसेल की वर्टिकल पैडिंग थोड़ी कम की */
+  }
+
+  .carousel-infinite-row {
+    gap: 5px !important; /* मोबाइल पर लोगोज़ के बीच का गैप कम किया */
+  }
+
+  .client-logo-box {
+    height: 38px !important;  /* लैपटॉप पर 64px था, मोबाइल पर इसे एकदम परफेक्ट 38px किया */
+    width: 110px !important;  /* चौड़ाई भी कम की ताकि स्क्रीन के हिसाब से संतुलित लगे */
+  }
+
+  .client-logo-box img {
+    max-height: 100% !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+  }
+}
+
+/*  */
+/* ==========================================================================
+   📱 MOBILE CUSTOM FIXES (max-width: 700px) - GRID, ROI & WORK SIMULATOR
+   ========================================================================== */
+@media (max-width: 700px) {
+
+  /* 🎯 1. OUR IMPACT IN NUMBERS: 1 लाइन में 2 कार्ड्स का परफेक्ट ग्रिड (2x2 Layout) */
+  .stats-grid-quad-m {
+    grid-template-columns: repeat(2, 1fr) !important; /* मोबाइल पर अब 2-कॉलम ग्रिड बनेगा */
+    gap: 12px !important; /* स्पेसिंग एकदम संतुलित */
+    width: 100% !important;
+  }
+
+  .stat-node-card-m {
+    padding: 16px 12px !important; /* मोबाइल के हिसाब से इनर स्पेसिंग कम की */
+    border-radius: 14px !important;
+  }
+
+  .stat-info-m h3 {
+    font-size: 18px !important; /* नंबर्स का साइज छोटा किया ताकि ओवरफ्लो न हो */
+  }
+
+  .stat-info-m p {
+    font-size: 10px !important; /* डिस्क्रिप्शन टेक्स्ट साइज बैलेंस्ड */
+  }
+
+  .stat-icon-glow-m {
+    width: 36px !important; /* आइकॉन ब्लॉक थोड़े छोटे किए */
+    height: 36px !important;
+  }
+  
+  .card-right-decor-icon-m {
+    display: none !important; /* मोबाइल पर दाईं तरफ वाला एक्स्ट्रा वेक्टर आइकॉन हाइड किया */
+  }
+
+
+  /* 📊 2. ROI SECTION: डायग्राम और फनल को कार्ड के अंदर लॉक करना (No More Overflow) */
+  .roas-dual-display-grid {
+    display: flex !important;
+    flex-direction: column !important; /* मोबाइल पर दोनों डिब्बे एक के नीचे एक आएंगे */
+    gap: 16px !important;
+  }
+
+  .roas-dual-display-grid .roas-view-panel,
+  .roas-dual-display-grid .dashboard-mock-card {
+    width: 100% !important; /* फुल विड्थ कार्ड */
+    padding: 12px !important; /* आउटर पैडिंग थोड़ी कम की ताकि अंदर जगह बढ़े */
+    border-radius: 16px !important;
+    overflow: hidden !important;
+  }
+
+  /* इनर डैशबोर्ड कंटेंट को मोबाइल पर वर्टिकल ब्लॉक किया ताकि एलिमेंट्स बाहर न भागें */
+  .mock-dashboard-content {
+    display: flex !important;
+    flex-direction: column !important; /* एलिमेंट्स अब सीधे एक के नीचे एक सजेंगे */
+    gap: 16px !important;
+    min-height: auto !important;
+    align-items: stretch !important;
+  }
+
+  /* साइडबार नोड्स को मोबाइल पर हॉरिजॉन्टल पट्टी में बदला */
+  .mock-metric-sidebar {
+    width: 100% !important;
+    flex-direction: row !important; /* दोनों छोटे डिब्बे अगल-बगल आएंगे */
+    gap: 10px !important;
+  }
+
+  .metric-mini-box {
+    flex: 1 !important;
+    padding: 8px !important;
+    text-align: center !important;
+  }
+
+  /* 📈 सेंट्रल चार्ट ग्राफ़ एरिया फिक्स */
+  .mock-main-chart-area {
+    width: 100% !important;
+    height: 140px !important; /* मोबाइल फ्रेंडली हाइट */
+    padding: 10px !important;
+  }
+
+  .svg-graph-canvas {
+    height: 80px !important;
+  }
+
+  /* राइट साइड डेटा प्रोग्रेस बार पैनल */
+  .mock-right-matrix-panel {
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  /* 🔺 फनल ग्राफिक मोबाइल ऑटो-स्केलर (प्योर सीएसएस रिसाइज) */
+  .funnel-graphics-container {
+    width: 100% !important;
+    padding: 10px 0 !important;
+    transform: scale(0.9) !important; /* डायग्राम को कार्ड के अंदर सिंक करने के लिए हल्का सा कंप्रेस */
+    transform-origin: center center !important;
+  }
+
+  /* नीचे का स्लाइडर और एरो कंट्रोल्स रिस्पॉन्सिव स्पेसिंग */
+  .roas-interactive-controller-row {
+    flex-direction: column !important; /* मोबाइल पर वर्टिकल स्टैक */
+    gap: 16px !important;
+    margin-top: 20px !important;
+  }
+
+  .slider-control-wrapper {
+    width: 100% !important;
+    max-width: 280px !important;
+  }
+
+  .state-transition-arrow {
+    transform: rotate(90deg) !important; /* एरो नीचे की तरफ पॉइंट करेगा */
+    font-size: 20px !important;
+    margin: 4px 0 !important;
+  }
+
+  .status-badge-engine {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .badge-capsule-border {
+    flex-direction: column !important; /* रेड और ग्रीन पिल्स एक के नीचे एक */
+    width: 100% !important;
+    max-width: 290px !important;
+    border-radius: 16px !important;
+    padding: 6px !important;
+  }
+
+  .state-pill {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 8px 12px !important;
+    border-radius: 10px !important;
+  }
+
+
+  /* 📱 3. OUR WORK SECTION: मोबाइल स्क्रीन से स्मार्टफोन सिमुलेटर को पूरी तरह गायब करना */
+  .phone-center-column,
+  .mock-device,
+  #phoneMockScreen,
+  .phone-notch,
+  .phone-home-indicator {
+    /* display: none !important; मोबाइल लेआउट से यह कॉलम पूरी तरह रिमूव */
+  }
+
+  /* सिमुलेटर हटने के बाद ग्रिड को मोबाइल पर क्लीन करना */
+  .work-workspace-container {
+    grid-template-columns: 1fr !important; /* सिंगल कॉलम लेआउट */
+    gap: 16px !important;
+  }
+
+  .work-column-left, 
+  .work-column-right {
+    grid-template-columns: 1fr !important; /* कार्ड्स अब एक के नीचे एक आएंगे */
+    grid-column: auto !important;
+    width: 100% !important;
+  }
+
+  /* ******************************* */
+  /* ==========================================================================
+     📱 OUR WORK SECTION - MOBILE LIGHTBOX PLUG-IN LOCK
+     ========================================================================== */
+  
+  /* 🎯 मोबाइल ग्रिड के बीच में से खड़े स्मार्टफोन के ढांचे (सिमुलेटर) को हटाना */
+  .work-workspace-container > .phone-center-column {
+    display: none !important; /* मुख्य ग्रिड लेआउट से गायब रहेगा ताकि स्पेस खराब न हो */
+  }
+
+  /* 🎯 पॉप-अप लेयर के अंदर स्मार्टफोन सिमुलेटर को दोबारा जिंदा (Show) करना */
+  #mobileWorkPopup .phone-center-column,
+  #mobileWorkPopup .mock-device,
+  #mobileWorkPopup #phoneMockScreen,
+  #mobileWorkPopup .phone-carousel-track {
+    display: flex !important; /* जब पॉप-अप खुलेगा, केवल तब यह पूरी तरह दिखाई देगा */
+  }
+
+  #mobileWorkPopup .mock-device {
+    width: 270px !important;
+    min-width: 270px !important;
+    max-width: 270px !important;
+    height: 520px !important;
+    border: 10px solid #23232e !important;
+    border-radius: 40px !important;
+  }
+
+  #mobileWorkPopup .phone-carousel-slide {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+  /* सिमुलेटर हटने के बाद ग्रिड को मोबाइल पर 1-कॉलम में साफ सुथरा सेट करना */
+  .work-workspace-container {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .work-column-left, 
+  .work-column-right {
+    grid-template-columns: 1fr !important; /* मोबाइल पर कार्ड्स एक के नीचे एक आएंगे */
+    grid-column: auto !important;
+    width: 100% !important;
+  }
+
+}
+
+/* ==========================================================================
+   📱 HERO SECTION MOBILE & TABLET FONT RESIZER & BUTTONS SINGLE LINE FIX
+   ========================================================================== */
+@media (max-width: 900px) {
+
+  /* 1. आइब्रो/टैग पिल साइज़ ट्यूनिंग */
+  .hero .eyebrow {
+    font-size: 9px !important;
+    padding: 4px 12px !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* 2. मुख्य टाइटल हेडिंग (H1) का फोंट साइज़ कम किया */
+  .hero h1 {
+    font-size: clamp(22px, 7.5vw, 32px) !important; /* साइज कंप्रेस की ताकि टेक्स्ट सुंदर दिखे */
+    line-height: 1.25 !important;
+    margin: 4px 0 14px !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  /* 3. डिस्क्रिप्शन पैराग्राफ का फोंट साइज़ कम किया */
+  .hero p {
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+    max-width: 100% !important;
+  }
+
+  /* 🎯 4. बटन्स कंटेनर - 1 लाइन में दोनों बटन्स (Side-by-Side Single Line) */
+  .hero-actions {
+    display: flex !important;
+    flex-direction: row !important; /* दोनों बटन्स एक ही लाइन में रहेंगे */
+    flex-wrap: nowrap !important;   /* अगली लाइन में जाने से रोकेगा */
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;            /* दोनों के बीच बारीक गैप */
+    margin: 20px 0 32px !important;
+    width: 100% !important;
+  }
+
+  /* 🎯 5. दोनों बटन्स का फोंट साइज़ और पैडिंग ट्यूनिंग */
+  .hero-actions .btn {
+    padding: 10px 14px !important;  /* पैडिंग थोड़ी कम की ताकि स्क्रीन में फिट आएँ */
+    font-size: 12.5px !important;    /* क्रिस्प मोबाइल फोंट साइज़ */
+    white-space: nowrap !important; /* बटन का टेक्स्ट दो लाइनों में नहीं टूटेगा */
+    flex: 1 !important;             /* दोनों बटन्स को बराबर विड्थ मिलेगी */
+    max-width: 180px !important;    /* बहुत ज्यादा बड़े होने से रोकेगा */
+    text-align: center !important;
+  }
+}
+
+/* 📲 बहुत छोटे मोबाइल (360px या उससे छोटे) के लिए सेफ फोंट स्केलिंग */
+@media (max-width: 400px) {
+  /* .hero h1 {
+    font-size: 20px !important;
+  } */
+  
+  .hero p {
+    font-size: 12.5px !important;
+  }
+
+  .hero-actions {
+    gap: 6px !important;
+  }
+
+  .hero-actions .btn {
+    padding: 9px 10px !important;
+    font-size: 11.5px !important;
+  }
+}
+
+
+/* service responsive  */
+/* ==========================================================================
+   📱 OUR CORE EXPERTISE - MOBILE 2 CARDS IN SINGLE LINE (2-COLUMN GRID)
+   ========================================================================== */
+@media (max-width: 700px) {
+
+  /* 1. कंटेनर की इनर पैडिंग मोबाइल के हिसाब से सेट की */
+  .wrap-services-custom {
+    padding: 0 12px !important;
+  }
+
+  /* 🎯 2. ग्रिड को 1 लाइन में 2 कार्ड्स (2-Column Grid) पर सेट किया */
+  .services-quad-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important; /* बारीक गैप ताकि दोनों कार्ड्स आराम से आएं */
+    margin-top: 20px !important;
+    width: 100% !important;
+  }
+
+  /* 🎨 3. सर्विस कार्ड्स की इनर पैडिंग और हाइट ट्यूनिंग */
+  .service-quad-card {
+    padding: 16px 12px 14px !important;
+    border-radius: 14px !important;
+    min-height: 210px !important; /* कार्ड्स की एक समान मिनिमम हाइट */
+  }
+
+  /* 4. आइकॉन बॉक्स को थोड़ा छोटा किया */
+  .quad-icon-box {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 18px !important;
+    margin-bottom: 10px !important;
+    border-radius: 10px !important;
+  }
+
+  /* ✍️ 5. हेडिंग (Title) का फोंट साइज़ कंप्रेस किया */
+  .service-quad-card h3 {
+    font-size: 13.5px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 6px !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  /* 📝 6. पैराग्राफ डिस्क्रिप्शन फोंट साइज़ */
+  .service-quad-card p {
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+    color: #475569 !important;
+  }
+
+  /* 🔘 7. Learn More बटन को मोबाइल-फ्रेंडली बनाया */
+  .quad-action {
+    font-size: 9px !important;
+    padding: 5px 10px !important;
+    margin-top: 12px !important;
+    border-radius: 6px !important;
+  }
+  .stories{
+    /* padding: 30px 10px !important; */
+  }
+  .wrap{
+    padding: 0 15px !important;
+  }
+  .enterprise-glow-shield{
+    padding:10px !important;
+  }
+  .slide-title{
+    font-size: 22px !important;
+  }
+  .slide-desc{
+    font-size: 13px !important;
+  }
+  .mini-stat-card h3{
+    font-size: 15px !important;
+  }
+  .testimonial-carousel-wrapper{
+    padding: 10px 0px !important;
+  }
+  .wp-chat-card{
+    width: 230px !important;
+  }
+  #brand-ecosystem-shield-e{
+    padding: 32px 0!important;
+  }
+  .aboutme{
+    font-size: 28px !important;
+  }
+}
+
+/* 📲 बहुत छोटे मोबाइल (360px या छोटे) के लिए सेफ फोंट स्केलिंग */
+@media (max-width: 380px) {
+  .services-quad-grid {
+    gap: 8px !important;
+  }
+
+  .service-quad-card {
+    padding: 12px 8px 10px !important;
+  }
+
+  .service-quad-card h3 {
+    font-size: 12px !important;
+  }
+
+  .service-quad-card p {
+    font-size: 9.5px !important;
+  }
+}
+
+/* testimonial responsive  */
+/* ==========================================================================
+   📱 🎭 TESTIMONIALS - ZIG-ZAG LAYOUT FOR TABLET & MOBILE
+   ========================================================================== */
+
+/* 📱 1. TABLET VIEW (min-width: 701px and max-width: 1024px) */
+@media (min-width: 701px) and (max-width: 1024px) {
+  
+  .testimonials-section,
+  .testimonial-wrapper-section {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+
+  /* लैपटॉप्प की तरह 2-कॉलम ग्रिड फ़्लो */
+  .testimonial-carousel-container,
+  .testimonials-slider-track,
+  .testimonials-grid-flow {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+    overflow-x: visible !important;
+  }
+
+  .testimonial-card,
+  .testimonial-slide-node {
+    flex: none !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  /* 🎯 लैपटॉप वाला ज़िग-ज़ैग ऑफसेट (Even/Odd Alternating Shift) */
+  .testimonial-card:nth-child(even),
+  .testimonial-slide-node:nth-child(even) {
+    transform: translateY(28px) !important; /* हर दूसरा कार्ड 28px नीचे खिसकेगा */
+  }
+}
+
+/* 📲 2. MOBILE VIEW (max-width: 700px) */
+@media (max-width: 700px) {
+
+  .testimonials-section,
+  .testimonial-wrapper-section {
+    padding-top: 10px !important;
+    padding-bottom: 28px !important; /* ज़िग-ज़ैग ऑफसेट के लिए नीचे सेफ स्पेस */
+  }
+
+  /* मोबाइल पर भी हॉरिजॉन्टल स्लाइडर बंद करके 2-कॉलम ज़िग-ज़ैग ग्रिड बनाना */
+  .testimonial-carousel-container,
+  .testimonials-slider-track,
+  .testimonials-grid-flow {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    overflow-x: visible !important;
+    padding: 0 10px !important;
+  }
+
+  .testimonial-card,
+  .testimonial-slide-node {
+    flex: none !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    padding: 12px 10px !important;
+    border-radius: 12px !important;
+  }
+
+  /* 🎯 मोबाइल के लिए ज़िग-ज़ैग ऑफसेट (Even cards shift down) */
+  .testimonial-card:nth-child(even),
+  .testimonial-slide-node:nth-child(even) {
+    transform: translateY(18px) !important; /* मोबाइल के हिसाब से 18px का ज़िग-ज़ैग ड्रिफ्ट */
+  }
+
+  /* इनर टेक्स्ट साइज ट्यूनिंग ताकि 2-कॉलम में फिट रहे */
+  .testimonial-card p,
+  .testimonial-quote-text {
+    font-size: 10.5px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .testimonial-author-name {
+    font-size: 11px !important;
+  }
+
+  .testimonial-author-role {
+    font-size: 8.5px !important;
+  }
+
+  .testimonial-avatar-img {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .why-us-section-wrapper{
+    padding: 1px 0px !important;
+  }
+}
+
+/* about me  */
+/* ==========================================================================
+   📱 ABOUT ME HIGHLIGHTS (2+1 CENTER LAYOUT) & MOBILE SOCIAL BAR FIX
+   ========================================================================== */
+
+@media (max-width: 900px) {
+
+  /* 🎯 1. 2+1 FLEX LAYOUT: पहली लाइन में 2 स्टैट्स, तीसरी अगली लाइन के सेंटर में */
+  .metrics-triple-grid-o {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 20px 0 !important;
+    width: 100% !important;
+  }
+
+  /* पहले 2 डिब्बे 50% चौड़ाई लेंगे (पहली लाइन में 2 पॉइंट्स) */
+  .metrics-triple-grid-o .metric-triple-node-o:nth-child(1),
+  .metrics-triple-grid-o .metric-triple-node-o:nth-child(2) {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* तीसरा डिब्बा 100% चौड़ाई लेकर अगली लाइन के बिल्कुल सेंटर में दिखेगा */
+  .metrics-triple-grid-o .metric-triple-node-o:nth-child(3) {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    margin-top: 10px !important;
+  }
+
+  /* वर्टिकल सेपरेटर लाइन्स मोबाइल पर पूरी तरह रिमूव */
+  .metric-triple-node-o::after {
+    display: none !important;
+  }
+
+  /* फोंट और स्पेसिंग ऑप्टिमाइजेशन */
+  .owner-live-counter-o {
+    font-size: 24px !important;
+  }
+
+  .metric-triple-node-o p {
+    font-size: 11.5px !important;
+  }
+
+
+  /* 🎯 2. लेफ़्ट साइड में तैरने वाले फ्लोटिंग सोशल आइकॉन्स को मोबाइल पर हाइड करना */
+  .side-social-shield-left {
+    display: none !important; /* स्क्रीनशॉट वाले FB, Insta, LinkedIn बबल्स गायब */
+  }
+
+
+  /* 🎯 3. फुटर सोशल लिंक्स मोबाइल-फ्रेंडली लुक ट्यूनिंग */
+  .foot-brand .socials {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 14px !important;
+    margin-top: 18px !important;
+  }
+
+  .foot-brand .socials a {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #0052ff !important;
+    background: rgba(0, 82, 255, 0.06) !important;
+    padding: 6px 14px !important;
+    border-radius: 99px !important;
+    border: 1px solid rgba(0, 82, 255, 0.12) !important;
+  }
+}
+
+
+/* logo animtaion */
+/* ---- LOGO PAGE LOAD EATING ANIMATION ENGINE ---- */
+.logo-eater-container {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  position: relative;
+}
+
+.logo-icon-box {
+  display: inline-block !important;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+.logo-eater-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block !important;
+  transform-origin: center center;
+  transition: transform 0.4s ease;
+}
+
+.logo-text-to-eat {
+  display: inline-block !important;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--text, #0a0f18);
+  max-width: 220px;
+  transition: max-width 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+}
+
+/* 🌟 ON-LOAD RUNNING ANIMATION CLASSES */
+
+/* Step 1: Logo 90 Degree Rotation + Forward Eating Motion */
+.logo-eater-container.auto-eat-active .logo-eater-icon {
+  animation: logoChompAction 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Step 2: Company Name Disappear / Swallowed Effect */
+.logo-eater-container.auto-eat-active .logo-text-to-eat {
+  animation: consumeTextAction 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+
+/* --- KEYFRAMES --- */
+
+@keyframes logoChompAction {
+  0% {
+    transform: rotate(0deg) translateX(0);
+  }
+  /* 1. Pehle 90 Degree Rotate hokar Cut-side text ki taraf aayegi */
+  20% {
+    transform: rotate(90deg) translateX(0) scale(1);
+  }
+  /* 2. First Bite / Chomp */
+  40% {
+    transform: rotate(90deg) translateX(15px) scale(1.15);
+  }
+  /* 3. Second Bite (Moving Forward into Text) */
+  65% {
+    transform: rotate(90deg) translateX(35px) scale(1.05);
+  }
+  /* 4. Full Eat Finish Motion */
+  85% {
+    transform: rotate(90deg) translateX(50px) scale(1.2);
+  }
+  /* 5. Reset back to original position & rotation */
+  100% {
+    transform: rotate(0deg) translateX(0) scale(1);
+  }
+}
+
+@keyframes consumeTextAction {
+  0% {
+    max-width: 220px;
+    opacity: 1;
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    max-width: 0px;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    filter: blur(2px);
+  }
+}
+
+/* partners carousel section  */
+/* ==========================================================================
+   🤝 PERFECT 3-COLUMN & 3-ROW PARTNER ECOSYSTEM FIX
+   ========================================================================== */
+
+/* 1. मुख्य लेआउट: 1fr | 300px | 1fr परफेक्ट अनुपात */
+.ecosystem-master-board-e {
+  display: grid !important;
+  grid-template-columns: 1fr 300px 1fr !important;
+  gap: 24px !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin-top: 24px !important;
+  box-sizing: border-box !important;
+}
+
+/* 2. लेफ्ट और राइट विंग का 3 वर्टिकल लाइन्स लेआउट */
+.triple-wing-column {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  min-width: 0 !important; /* ओवरफ्लो ग्लिच रोकेगा */
+  overflow: hidden !important;
+}
+
+/* 3. हर रो का मास्क आउटर फ्रेम */
+.partner-carousel-track-wrapper {
+  overflow: hidden !important;
+  position: relative !important;
+  width: 100% !important;
+  padding: 4px 0 !important;
+}
+
+/* 4. स्लाइडर ट्रैक (Pure Flex Row with Max Content Width) */
+.partner-carousel-slider {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 12px !important;
+  width: max-content !important;
+  will-change: transform;
+}
+
+/* 5. एनीमेशन्स कंट्रोलर */
+.scroll-left-fast { animation: logoScrollLeft 14s linear infinite !important; }
+.scroll-left-slow { animation: logoScrollLeft 22s linear infinite !important; }
+.scroll-right-fast { animation: logoScrollRight 14s linear infinite !important; }
+.scroll-right-slow { animation: logoScrollRight 22s linear infinite !important; }
+
+.partner-carousel-track-wrapper:hover .partner-carousel-slider {
+  animation-play-state: paused !important;
+}
+
+/* 6. लोगो पैड्स (कार्ड्स) का फिक्स साइज */
+.partner-carousel-slider .partner-logo-pad-e {
+  flex: 0 0 130px !important;
+  width: 130px !important;
+  max-width: 130px !important;
+  height: 68px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 82, 255, 0.08) !important;
+  border-radius: 14px !important;
+  padding: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+  box-sizing: border-box !important;
+}
+
+.partner-carousel-slider .ecosystem-img-asset-e {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+}
+
+/* 7. सेंटर फ़ाउंडर पिलर का सही अलाइनमेंट */
+.founder-center-pillar-e {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.founder-card-glow-pad-e {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 82, 255, 0.08) !important;
+  border-radius: 20px !important;
+  padding: 16px !important;
+  width: 100% !important;
+  max-width: 280px !important;
+  box-shadow: 0 15px 40px rgba(0, 82, 255, 0.06) !important;
+  text-align: center !important;
+}
+
+.founder-image-wrapper-e {
+  width: 100% !important;
+  height: 250px !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%) !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+}
+
+.founder-photo-asset-e {
+  width: 90% !important;
+  height: 95% !important;
+  object-fit: contain !important;
+}
+
+/* KEYFRAMES */
+@keyframes logoScrollLeft {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes logoScrollRight {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+/* 📱 मोबाइल और टैबलेट रेस्पॉन्सिव */
+@media (max-width: 1024px) {
+  .ecosystem-master-board-e {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .founder-center-pillar-e {
+    order: 1 !important; /* मोबाइल पर फ़ाउंडर सबसे ऊपर रहेगा */
+  }
+
+  .left-wing-e { order: 2 !important; }
+  .right-wing-e { order: 3 !important; }
+}
+
+/* ==========================================================================
+   🤝 PARTNER SECTION - 1450px MAX-WIDTH & MOBILE 3-LINE CAROUSEL LIMIT
+   ========================================================================== */
+
+/* 🎯 1. केवल इस सेक्शन की चौड़ाई लैपटॉप पर 1450px तक बढ़ाना */
+#brand-ecosystem-shield-e .wrap {
+  max-width: 1450px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* लैपटॉप ग्रिड का अनुपात: 1fr | 300px | 1fr */
+#brand-ecosystem-shield-e .ecosystem-master-board-e {
+  display: grid !important;
+  grid-template-columns: 1fr 300px 1fr !important;
+  gap: 2px !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* 🎯 2. 📱 MOBILE VIEW OPTIMIZATION (max-width: 1024px) */
+@media (max-width: 1024px) {
+  
+  #brand-ecosystem-shield-e .ecosystem-master-board-e {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* 📸 फ़ाउंडर कार्ड सबसे ऊपर दिखेगा */
+  #brand-ecosystem-shield-e .founder-center-pillar-e {
+    order: 1 !important;
+    max-width: 290px !important;
+    margin: 0 auto !important;
+  }
+
+  /* 🔷 लेफ़्ट विंग (3 लाइन्स कैरोसेल) फ़ाउंडर के नीचे दिखेगा */
+  #brand-ecosystem-shield-e .left-wing-e {
+    order: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  /* 🚫 6 लाइन्स का क्लटर रोकने के लिए राइट विंग को मोबाइल/टैबलेट पर हाइड किया */
+  #brand-ecosystem-shield-e .right-wing-e {
+    display: none !important; 
+  }
+
+  /* 📐 मोबाइल पर लोगोज़ कार्ड्स का क्लीन साइज़ */
+  #brand-ecosystem-shield-e .partner-carousel-slider .partner-logo-pad-e {
+    flex: 0 0 120px !important;
+    width: 120px !important;
+    height: 60px !important;
+    padding: 8px !important;
+  }
+}
+
+/* client success */
+/* ==========================================================================
+   🎯 CLIENT SUCCESS STORIES - FIXED CARD HEIGHT & RESPONSIVE SIZE LOCK
+   ========================================================================== */
+
+/* 1. मुख्य कैरोसेल बॉक्स की हाइट फिक्स */
+.interview-carousel-wrapper.enterprise-glow-shield {
+  min-height: 520px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+}
+
+.interview-slide {
+  height: 100% !important;
+}
+
+/* 2. लेआउट फ्लेक्स फिक्स */
+.interview-flex-layout {
+  align-items: stretch !important; /* दोनों कॉलम्स (इमेज + कंटेंट) की हाइट बराबर रखेगा */
+}
+
+/* 3. इमेज फ्रेम की फिक्स हाइट */
+.side-grid-image-frame {
+  height: 100% !important;
+  min-height: 420px !important;
+  max-height: 420px !important;
+}
+
+.side-grid-image-frame img {
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* 4. राइट साइड कंटेंट ब्लॉक का स्पेस लॉकिंग */
+.side-grid-text-block {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+}
+
+/* 5. टाइटल और डिस्क्रिप्शन की हाइट फिक्स ताकि टेक्स्ट कम/ज़्यादा होने पर कार्ड न हिले */
+.slide-title {
+  min-height: 60px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.slide-desc {
+  min-height: 85px !important;
+  max-height: 110px !important;
+  overflow-y: auto !important; /* अगर टेक्स्ट बहुत ज़्यादा हो तो कार्ड का साइज़ नहीं बिगड़ेगा */
+  padding-right: 4px !important;
+}
+
+/* स्क्रॉलबार को क्लीन रखें */
+.slide-desc::-webkit-scrollbar {
+  width: 4px;
+}
+.slide-desc::-webkit-scrollbar-thumb {
+  background: rgba(0, 82, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* 6. नीचे के 4 स्टैट्स/मैट्रिक्स कार्ड्स की फिक्स हाइट */
+.slide-metrics-bento .mini-stat-card {
+  min-height: 110px !important;
+  max-height: 110px !important;
+  height: 110px !important;
+  justify-content: space-between !important;
+}
+
+/* ==========================================================================
+   📱 MOBILE & TABLET FIXED CARD HEIGHT (max-width: 900px)
+   ========================================================================== */
+@media (max-width: 900px) {
+  
+  .interview-carousel-wrapper.enterprise-glow-shield {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 20px 16px !important;
+  }
+
+  /* मोबाइल पर इमेज फ्रेम की फिक्स हाइट */
+  .side-grid-image-frame {
+    min-height: 220px !important;
+    max-height: 220px !important;
+    height: 220px !important;
+  }
+
+  /* मोबाइल पर हेडिंग और पैराग्राफ हाइट ट्यूनिंग */
+  .slide-title {
+    min-height: auto !important;
+    font-size: 20px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .slide-desc {
+    min-height: auto !important;
+    max-height: 90px !important;
+    font-size: 12.5px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* मोबाइल पर स्टैट्स कार्ड्स की फिक्स हाइट */
+  .slide-metrics-bento .mini-stat-card {
+    min-height: 95px !important;
+    max-height: 95px !important;
+    height: 95px !important;
+    padding: 10px 8px !important;
+  }
+}
+
+/* ==========================================================================
+   📊 ROI SECTION MOBILE CONTROLLER FIX & BADGE HIDE
+   ========================================================================== */
+
+@media (max-width: 900px) {
+
+  /* 🎯 1. 'Red/Green ROAS locked & When Whopper clicked' वाले बटन/बैज को मोबाइल पर पूरी तरह छुपाना */
+  .roas-interactive-controller-row .status-badge-engine,
+  .roas-interactive-controller-row .state-transition-arrow {
+    display: none !important;
+  }
+
+  /* 🎯 2. कंट्रोल्स रो को मोबाइल पर सेंटर अलाइन करना */
+  .roas-interactive-controller-row {
+    justify-content: center !important;
+    margin-top: 20px !important;
+    width: 100% !important;
+  }
+
+  /* 🎯 3. स्लाइडर ट्रैकर की चौड़ाई और पैडिंग फिक्स */
+  .slider-control-wrapper {
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 0 auto !important;
+  }
+
+  .gradient-slider-track {
+    width: 100% !important;
+    height: 38px !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+  }
+
+  .slider-handle-dot {
+    width: 30px !important;
+    height: 30px !important;
+    top: 4px !important;
+    left: 4px !important;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  }
+
+  /* 🚀 जादुई फ़िक्स: After ट्रिगर होने पर हैंडल अब बटन के बाहर नहीं भागेगा (280px - 38px = 242px) */
+  .gradient-slider-track.after-engine-active .slider-handle-dot {
+    transform: translateX(242px) !important;
+  }
+
+  /* लेबल्स का फोंट साइज़ और एलाइनमेंट */
+  .slider-labels {
+    font-size: 11.5px !important;
+    margin-top: 8px !important;
+  }
+}
+
+/* mobile screen me website */
