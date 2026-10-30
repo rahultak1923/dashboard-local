@@ -38,13 +38,13 @@ export default function EmployeesPage({ onNavigateToAdd, employeesList }) {
     fetch(scriptURL)
       .then(response => {
         if (!response.ok) throw new Error("Network response not ok");
-        return response.json(); // Direct JSON parse karein
+        return response.json();
       })
       .then(data => {
         console.log("Sheet data received:", data);
 
         if (Array.isArray(data) && data.length > 0) {
-          const formattedData = data.map((item, index) => ({
+         const formattedData = data.map((item, index) => ({
             _id: index.toString(),
             name: item.name || "Unknown",
             email: item.email || "N/A",
@@ -54,8 +54,22 @@ export default function EmployeesPage({ onNavigateToAdd, employeesList }) {
             pan: item.pan || "N/A",
             department: item.department || "General",
             role: item.role || "Team Member",
-            image: item.photoUrl && item.photoUrl.startsWith("http") ? item.photoUrl : null,
+            image: formatImageSrc(item.photoUrl || item.photo),
             resume: item.resumeUrl && item.resumeUrl.startsWith("http") ? item.resumeUrl : null,
+
+            // 1. Documents ke URLs yahan add karein:
+            aadharDocUrl: formatImageSrc(item.aadharDocUrl),
+            panDocUrl: formatImageSrc(item.panDocUrl),
+            marksheet10Url: formatImageSrc(item.marksheet10Url),
+            marksheet12Url: formatImageSrc(item.marksheet12Url),
+            graduationDocUrl: formatImageSrc(item.graduationDocUrl),
+
+            // 2. Bank Details yahan add karein:
+            accHolderName: item.accHolderName || "N/A",
+            bankName: item.bankName || "N/A",
+            accNumber: item.accNumber || "N/A",
+            ifscCode: item.ifscCode || "N/A",
+
             status: "Active"
           }));
 
@@ -140,63 +154,178 @@ export default function EmployeesPage({ onNavigateToAdd, employeesList }) {
         ))}
       </div>
 
-      {selectedEmployee && (
-        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: 15 }}>
-          <div style={{ background: T.surface, borderRadius: 20, width: "100%", maxWidth: 480, boxShadow: T.shadowLg, position: "relative", overflow: "hidden" }}>
-            <div style={{ background: `linear-gradient(135deg, ${T.primary}, ${T.navy})`, height: 80, padding: 16, display: "flex", justifyContent: "flex-end" }}>
-              <button onClick={() => setSelectedEmployee(null)} style={{ background: "rgba(255,255,255,0.2)", border: "none", borderRadius: "50%", width: 32, height: 32, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "#fff" }}>
-                <X size={16} />
-              </button>
+     {selectedEmployee && (
+  <div style={{ 
+    position: "fixed", 
+    inset: 0, 
+    background: "rgba(0,0,0,0.6)", 
+    backdropFilter: "blur(6px)", 
+    display: "flex", 
+    alignItems: "center", 
+    justifyContent: "center", 
+    zIndex: 1000, 
+    padding: 16 
+  }}>
+    <div style={{ 
+      background: T.surface, 
+      borderRadius: 20, 
+      width: "100%", 
+      maxWidth: 720, /* Modal width badha di gayi hai */
+      maxHeight: "90vh",
+      overflowY: "auto",
+      boxShadow: T.shadowLg, 
+      position: "relative" 
+    }}>
+      {/* Header Banner */}
+      <div style={{ background: `linear-gradient(135deg, ${T.primary}, ${T.navy})`, height: 85, padding: 16, display: "flex", justifyContent: "flex-end" }}>
+        <button onClick={() => setSelectedEmployee(null)} style={{ background: "rgba(255,255,255,0.2)", border: "none", borderRadius: "50%", width: 34, height: 34, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "#fff" }}>
+          <X size={18} />
+        </button>
+      </div>
+
+      <div style={{ padding: "0 28px 28px 28px", position: "relative", marginTop: -45, textAlign: "center" }}>
+        {/* Profile Avatar */}
+        <div style={{ width: 90, height: 90, borderRadius: "50%", background: T.surface, border: `4px solid ${T.surface}`, margin: "0 auto 12px", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: T.shadowSm }}>
+          {selectedEmployee.image ? (
+            <img 
+              src={selectedEmployee.image} 
+              alt={selectedEmployee.name} 
+              referrerPolicy="no-referrer"
+              onError={(e) => { e.target.style.display = 'none'; }}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+            />
+          ) : (
+            <div style={{ width: "100%", height: "100%", background: T.primary, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 24 }}>
+              {selectedEmployee.name ? selectedEmployee.name.slice(0, 2).toUpperCase() : "EM"}
             </div>
+          )}
+        </div>
 
-            <div style={{ padding: "0 24px 24px 24px", position: "relative", marginTop: -40, textAlign: "center" }}>
-              <div style={{ width: 80, height: 80, borderRadius: "50%", background: T.surface, border: `4px solid ${T.surface}`, margin: "0 auto 10px", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                {selectedEmployee.image ? (
-                  <img 
-                    src={selectedEmployee.image} 
-                    alt={selectedEmployee.name} 
-                    referrerPolicy="no-referrer"
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }} 
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                    }}
-                  />
-                ) : (
-                  <div style={{ width: "100%", height: "100%", background: T.primary, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700 }}>
-                    {selectedEmployee.name ? selectedEmployee.name.slice(0, 2).toUpperCase() : "EM"}
-                  </div>
-                )}
-              </div>
+        <div style={{ fontFamily: displayFont, fontSize: 20, fontWeight: 700, color: T.text }}>{selectedEmployee.name}</div>
+        <div style={{ color: T.primary, fontSize: 13.5, fontWeight: 600, marginTop: 2 }}>{selectedEmployee.role} ({selectedEmployee.department})</div>
 
-              <div style={{ fontFamily: displayFont, fontSize: 18, fontWeight: 600 }}>{selectedEmployee.name}</div>
-              <div style={{ color: T.primary, fontSize: 13, fontWeight: 600 }}>{selectedEmployee.role} ({selectedEmployee.department})</div>
-
-              <div style={{ background: T.bg, padding: 14, borderRadius: 10, marginTop: 16, textAlign: "left", fontSize: 13, display: "flex", flexDirection: "column", gap: 8 }}>
-                <div><b>Email:</b> {selectedEmployee.email}</div>
-                <div><b>Mobile:</b> {selectedEmployee.phone}</div>
-                <div><b>Address:</b> {selectedEmployee.address}</div>
-                <div><b>Aadhaar:</b> {selectedEmployee.aadhar}</div>
-                <div><b>PAN:</b> {selectedEmployee.pan}</div>
-                
-                {selectedEmployee.resume && (
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 6 }}>
-                    <b>Resume:</b>
-                    <a href={selectedEmployee.resume} target="_blank" rel="noreferrer" style={{ color: T.primary, display: "flex", alignItems: "center", gap: 4, textDecoration: "none", fontWeight: 600 }}>
-                      View Resume <ExternalLink size={12} />
-                    </a>
-                  </div>
-                )}
-              </div>
-
-              <div style={{ display: "flex", gap: 10, marginTop: 20 }}>
-                <button onClick={() => setSelectedEmployee(null)} style={{ ...primaryBtn, flex: 1, justifyContent: "center" }}>
-                  Close
-                </button>
-              </div>
+        {/* Basic Information Grid */}
+        <div style={{ 
+          background: T.bg, 
+          padding: 16, 
+          borderRadius: 12, 
+          marginTop: 18, 
+          textAlign: "left", 
+          fontSize: 13, 
+          display: "grid", 
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", 
+          gap: 12,
+          border: `1px solid ${T.border}`
+        }}>
+          <div><b>Email:</b> {selectedEmployee.email}</div>
+          <div><b>Mobile:</b> {selectedEmployee.phone}</div>
+          <div><b>Address:</b> {selectedEmployee.address}</div>
+          <div><b>Aadhaar No:</b> {selectedEmployee.aadhar ? String(selectedEmployee.aadhar).replace(/^'/, '') : "N/A"}</div>
+          <div><b>PAN No:</b> {selectedEmployee.pan}</div>
+          
+          {selectedEmployee.resume && (
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <b>Resume:</b>
+              <a href={selectedEmployee.resume} target="_blank" rel="noreferrer" style={{ color: T.primary, display: "flex", alignItems: "center", gap: 4, textDecoration: "none", fontWeight: 600 }}>
+                View PDF <ExternalLink size={13} />
+              </a>
             </div>
+          )}
+          {/* Bank Information (Salary Account) */}
+        <div style={{ 
+          background: T.bg, 
+          padding: 14, 
+          borderRadius: 12, 
+          marginTop: 14, 
+          textAlign: "left", 
+          fontSize: 13, 
+          border: `1px solid ${T.border}` 
+        }}>
+          <div style={{ fontWeight: 700, color: T.text, marginBottom: 8 }}>🏦 Bank Information (Salary Account)</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 8 }}>
+            <div><b>Account Holder:</b> {selectedEmployee.accHolderName || "N/A"}</div>
+            <div><b>Bank Name:</b> {selectedEmployee.bankName || "N/A"}</div>
+            <div><b>Account Number:</b> {selectedEmployee.accNumber ? String(selectedEmployee.accNumber).replace(/^'/, '') : "N/A"}</div>
+            <div><b>IFSC Code:</b> {selectedEmployee.ifscCode || "N/A"}</div>
           </div>
         </div>
-      )}
+        </div>
+
+        {/* Uploaded Documents Gallery */}
+        <div style={{ marginTop: 24, textAlign: "left" }}>
+          <div style={{ fontFamily: displayFont, fontSize: 15, fontWeight: 700, color: T.text, marginBottom: 12 }}>
+            Uploaded Verification Documents
+          </div>
+
+          <div style={{ 
+            display: "grid", 
+            gridTemplateColumns: "repeat(auto-fit, minmax(115px, 1fr))", 
+            gap: 12 
+          }}>
+            {[
+              { label: "Aadhaar Card", url: selectedEmployee.aadharDocUrl },
+              { label: "PAN Card", url: selectedEmployee.panDocUrl },
+              { label: "10th Marksheet", url: selectedEmployee.marksheet10Url },
+              { label: "12th Marksheet", url: selectedEmployee.marksheet12Url },
+              { label: "Graduation", url: selectedEmployee.graduationDocUrl },
+            ].map((doc, idx) => (
+              <div 
+                key={idx} 
+                style={{ 
+                  border: `1px solid ${T.border}`, 
+                  borderRadius: 10, 
+                  padding: 8, 
+                  background: T.surface, 
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  minHeight: 120
+                }}
+              >
+                <div style={{ fontSize: 11.5, fontWeight: 600, color: T.textSoft, marginBottom: 6 }}>
+                  {doc.label}
+                </div>
+
+                {doc.url && doc.url.startsWith("http") ? (
+                  <>
+                    <div style={{ width: "100%", height: 60, borderRadius: 6, overflow: "hidden", background: "#f0f0f0", marginBottom: 6 }}>
+                      <img 
+                        src={doc.url} 
+                        alt={doc.label} 
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+                      />
+                    </div>
+                    <a 
+                      href={doc.url} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      style={{ fontSize: 11, color: T.primary, textDecoration: "none", fontWeight: 700, display: "flex", alignItems: "center", gap: 3 }}
+                    >
+                      Open <ExternalLink size={11} />
+                    </a>
+                  </>
+                ) : (
+                  <div style={{ fontSize: 11, color: T.textFaint, margin: "auto 0" }}>
+                    Not Uploaded
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Modal Close Button */}
+        <div style={{ display: "flex", gap: 10, marginTop: 24 }}>
+          <button onClick={() => setSelectedEmployee(null)} style={{ ...primaryBtn, flex: 1, justifyContent: "center" }}>
+            Close Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
     </div>
   );
 }
