@@ -1,63 +1,75 @@
 import React, { useState, useEffect } from "react";
-import { LayoutGrid, Users, Search, Bell, ChevronDown, Menu, X, LogOut } from "lucide-react";
-import { T, bodyFont, displayFont, monoFont, responsiveCSS, cardStyle } from "./theme";
+import { Search, ChevronDown, Menu, LogOut, User, LayoutGrid } from "lucide-react";
+import { T, bodyFont, displayFont, responsiveCSS, cardStyle, primaryBtn } from "./theme";
 import OverviewPage from "./pages/OverviewPage";
 import EmployeesPage from "./pages/EmployeesPage";
 import AddEmployeePage from "./pages/AddEmployeePage";
-import LoginPage from "./pages/LoginPage";       // Login Page Import
-import RegisterPage from "./pages/RegisterPage";   // Register Page Import
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import ProfilePage from "./pages/ProfilePage";
+import EmployeeDetailsPage from "./pages/EmployeeDetailsPage";
+import Sidebar from "./components/Sidebar";
+import RatingsPage from "./pages/RatingsPage";
 
 export default function ITDashboard() {
-  // --- Auth States ---
   const [isAuthed, setIsAuthed] = useState(false);
-  const [authView, setAuthView] = useState("login"); // 'login' ya 'register'
+  const [authView, setAuthView] = useState("login");
   const [currentUser, setCurrentUser] = useState(null);
 
-  // --- Dashboard States ---
-  const [page, setPage] = useState("Overview"); // 'Overview', 'Employees', ya 'AddEmployee'
+  const [page, setPage] = useState("Overview");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [range, setRange] = useState("24h");
 
-  // Employees List State
-  const [employeesList, setEmployeesList] = useState([
-    { _id: "1", name: "Loading", email: "loading@company.com", phone: "+91 XXXXX XXXXX", address: "Malviya Nagar, Jaipur", aadhar: "XXXX-XXXX-1234", pan: "ABCDE1234F", department: "Development", role: "Frontend Dev", location: "Jaipur Office", status: "Active", image: null },
-  ]);
+  const [employeesList, setEmployeesList] = useState([]);
 
-  // Check initial token on load
   useEffect(() => {
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
     if (token && user) {
-      setIsAuthed(true);
-      setCurrentUser(JSON.parse(user));
+      try {
+        setIsAuthed(true);
+        const parsedUser = JSON.parse(user);
+        setCurrentUser(parsedUser);
+      } catch (e) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+      }
+    }
+  }, []);
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then((reg) => console.log("Service Worker Active!", reg))
+          .catch((err) => console.error("Service Worker failed:", err));
+      });
     }
   }, []);
 
-  // Handle Logout
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setIsAuthed(false);
+    setCurrentUser(null);
     setAuthView("login");
     setProfileMenuOpen(false);
+    setPage("Overview");
   };
 
-  // Handle Login Success
   const handleLoginSuccess = (userData) => {
     setIsAuthed(true);
     setCurrentUser(userData);
     setPage("Overview");
   };
 
-  // Handle New Employee Add
   const handleAddSuccess = (newEmp) => {
-    setEmployeesList([newEmp, ...employeesList]);
+    setEmployeesList((prev) => [newEmp, ...prev]);
     setPage("Employees");
   };
 
-  // --- AGAR USER LOGGED-IN NAHI HAI, TOH LOGIN/REGISTER DIKHAO ---
   if (!isAuthed) {
     return (
       <div style={{ fontFamily: bodyFont, color: T.text }}>
@@ -77,7 +89,6 @@ export default function ITDashboard() {
     );
   }
 
-  // --- AGAR USER LOGGED-IN HAI, TOH MAIN DASHBOARD DIKHAO ---
   const traffic = [
     { t: "00:00", in: 240, out: 180 }, { t: "02:00", in: 210, out: 160 },
     { t: "04:00", in: 190, out: 140 }, { t: "06:00", in: 260, out: 200 },
@@ -93,11 +104,6 @@ export default function ITDashboard() {
   ];
   const totalIn = 5400;
 
-  const navItems = [
-    { label: "Overview", icon: LayoutGrid },
-    { label: "Employees", icon: Users },
-  ];
-
   return (
     <div style={{ fontFamily: bodyFont, color: T.text, height: "100vh", overflow: "hidden" }}>
       <style>{`
@@ -110,68 +116,22 @@ export default function ITDashboard() {
       <div className="app-shell" style={{ background: `radial-gradient(1200px 600px at 100% -10%, #E1EEFF 0%, ${T.bg} 45%)` }}>
         <div className={`sidebar-overlay ${sidebarOpen ? "open" : ""}`} onClick={() => setSidebarOpen(false)} />
 
-        {/* SIDEBAR */}
-        <aside
-          className={`sidebar ${sidebarOpen ? "open" : ""}`}
-          style={{
-            background: `linear-gradient(165deg, ${T.navyMid} 0%, ${T.navy} 60%, #060F38 100%)`,
-            padding: "24px 16px",
-            display: "flex",
-            flexDirection: "column",
-            gap: 28,
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 8px" }}>
-            <div>
-              <div style={{ fontFamily: displayFont, fontWeight: 600, fontSize: 16, color: "#fff" }}>DW CRM</div>
-              <div style={{ fontFamily: monoFont, fontSize: 9.5, color: T.sky, letterSpacing: 1.2 }}>Local Dashboard</div>
-            </div>
-            <button
-              onClick={() => setSidebarOpen(false)}
-              className="hamburger-btn"
-              style={{ background: "rgba(255,255,255,0.08)", border: "none", borderRadius: 8, width: 30, height: 30, color: "#fff", cursor: "pointer" }}
-            >
-              <X size={16} />
-            </button>
-          </div>
+        <Sidebar
+          currentPage={page}
+          setPage={setPage}
+          onLogout={handleLogout}
+          currentUser={currentUser}
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+        />
 
-          <nav style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-            {navItems.map(({ label, icon: Icon }) => {
-              const active = page === label || (page === "AddEmployee" && label === "Employees");
-              return (
-                <div
-                  key={label}
-                  onClick={() => { setPage(label); setSidebarOpen(false); }}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                    padding: "10px 12px",
-                    borderRadius: 9,
-                    cursor: "pointer",
-                    background: active ? "rgba(0,194,255,0.14)" : "transparent",
-                    borderLeft: active ? `2px solid ${T.sky}` : "2px solid transparent",
-                  }}
-                >
-                  <Icon size={16} color={active ? T.sky : "#8CA0D0"} strokeWidth={2} />
-                  <span style={{ fontSize: 13.5, fontWeight: active ? 600 : 500, color: active ? "#fff" : "#8CA0D0" }}>
-                    {label}
-                  </span>
-                </div>
-              );
-            })}
-          </nav>
-        </aside>
-
-        {/* MAIN CONTENT AREA */}
-        <main className="main">
-          {/* TOPBAR */}
+        <main className="main" style={{ flex: 1, height: "100vh", overflowY: "auto", display: "flex", flexDirection: "column" }}>
           <div className="topbar">
             <div className="topbar-title" style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0, flex: 1 }}>
               <button
                 onClick={() => setSidebarOpen(true)}
                 className="hamburger-btn"
-                style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 10, width: 36, height: 36, cursor: "pointer" }}
+                style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 10, width: 36, height: 36, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}
               >
                 <Menu size={16} />
               </button>
@@ -179,10 +139,13 @@ export default function ITDashboard() {
                 <h1 style={{ fontFamily: displayFont, fontSize: 20, fontWeight: 600, margin: 0, color: T.text }}>
                   {page === "Overview" && "Operations Overview"}
                   {page === "Employees" && "Employee Directory & CRM"}
+                  {page === "EmployeeDetails" && "Employee Details (Database)"}
                   {page === "AddEmployee" && "Register New Employee"}
+                  {page === "Profile" && "My Account Profile"}
+                  
                 </h1>
                 <p style={{ fontFamily: bodyFont, fontSize: 12.5, color: T.textSoft, margin: "2px 0 0" }}>
-                  Local office management system
+                  {currentUser?.role === "admin" ? "Admin Management Console" : "Employee Portal"}
                 </p>
               </div>
             </div>
@@ -230,18 +193,50 @@ export default function ITDashboard() {
                       fontSize: 13,
                     }}
                   >
-                    {currentUser?.username ? currentUser.username.slice(0, 2).toUpperCase() : "AD"}
+                    {currentUser?.name ? currentUser.name.slice(0, 2).toUpperCase() : "DW"}
                   </div>
                   <ChevronDown size={14} color={T.textSoft} style={{ transform: profileMenuOpen ? "rotate(180deg)" : "none" }} />
                 </div>
 
                 {profileMenuOpen && (
-                  <div className="profile-menu" style={cardStyle({ padding: 8, position: "absolute", right: 0, top: 45, width: 160, zIndex: 100 })}>
+                  <div className="profile-menu" style={cardStyle({ padding: 6, position: "absolute", right: 0, top: 45, width: 170, zIndex: 100 })}>
+                    <div
+                      onClick={() => {
+                        setPage("Profile");
+                        setProfileMenuOpen(false);
+                      }}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8,
+                        padding: "8px 10px",
+                        cursor: "pointer",
+                        color: T.text,
+                        fontSize: 13,
+                        fontWeight: 600,
+                        borderRadius: 6,
+                        borderBottom: `1px solid ${T.border}`
+                      }}
+                    >
+                      <User size={15} color={T.primary} /> My Profile
+                    </div>
+
                     <div
                       onClick={handleLogout}
-                      style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px", cursor: "pointer", color: T.bad, fontSize: 13, fontWeight: 600 }}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8,
+                        padding: "8px 10px",
+                        cursor: "pointer",
+                        color: T.bad,
+                        fontSize: 13,
+                        fontWeight: 600,
+                        borderRadius: 6,
+                        marginTop: 4
+                      }}
                     >
-                      <LogOut size={14} /> Log Out
+                      <LogOut size={15} /> Log Out
                     </div>
                   </div>
                 )}
@@ -249,33 +244,67 @@ export default function ITDashboard() {
             </div>
           </div>
 
-          {/* PAGE ROUTING LOGIC */}
-          {page === "Overview" && (
-            <OverviewPage
-              traffic={traffic}
-              latency={latency}
-              fleet={fleet}
-              tickets={tickets}
-              totalIn={totalIn}
-              range={range}
-              setRange={setRange}
-              goto={(target) => setPage(target)}
-            />
-          )}
+          {/* PAGE ROUTING LOGIC - Full Width Padding */}
+          <div style={{  width: "100%", boxSizing: "border-box" }}>
+            {page === "Overview" && (
+              <OverviewPage
+                traffic={traffic}
+                latency={latency}
+                fleet={fleet}
+                tickets={tickets}
+                totalIn={totalIn}
+                range={range}
+                setRange={setRange}
+                goto={(target) => setPage(target)}
+              />
+            )}
 
-          {page === "Employees" && (
-            <EmployeesPage 
-              employeesList={employeesList}
-              onNavigateToAdd={() => setPage("AddEmployee")} 
-            />
-          )}
+            {page === "Employees" && (
+              currentUser?.role === "admin" ? (
+                <EmployeesPage 
+                  employeesList={employeesList}
+                  onNavigateToAdd={() => setPage("AddEmployee")} 
+                />
+              ) : (
+                <div style={{ padding: 40, textAlign: "center", color: T.textFaint }}>
+                  ⚠️ Access Denied
+                </div>
+              )
+            )}
 
-          {page === "AddEmployee" && (
-            <AddEmployeePage 
-              onBack={() => setPage("Employees")} 
-              onAddSuccess={handleAddSuccess} 
-            />
-          )}
+            {page === "EmployeeDetails" && (
+              currentUser?.role === "admin" ? (
+                <EmployeeDetailsPage />
+              ) : (
+                <div style={{ padding: 40, textAlign: "center", color: T.textFaint }}>
+                  ⚠️ Access Denied
+                </div>
+              )
+            )}
+
+            {page === "AddEmployee" && (
+              currentUser?.role === "admin" ? (
+                <AddEmployeePage 
+                  onBack={() => setPage("Employees")} 
+                  onAddSuccess={handleAddSuccess} 
+                />
+              ) : (
+                <div style={{ padding: 40, textAlign: "center", color: T.textFaint }}>
+                  ⚠️ Access Denied
+                </div>
+              )
+            )}
+
+            {page === "Profile" && (
+              <ProfilePage 
+                onBack={() => setPage("Overview")} 
+                onProfileUpdated={(updated) => setCurrentUser(updated)} 
+              />
+            )}
+            {page === "Ratings" && (
+  <RatingsPage currentUser={currentUser} />
+)}
+          </div>
         </main>
       </div>
     </div>

@@ -114,7 +114,7 @@ export default function EmployeesPage({ onNavigateToAdd, employeesList }) {
         </div>
       )}
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))", gap: 16 }}>
         {employees.map((emp) => (
           <div 
             key={emp._id} 
