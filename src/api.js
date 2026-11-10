@@ -1,6 +1,7 @@
 // src/api.js
 // Agar local Wi-Fi pe chalana ho toh 'localhost' ki jagah apna PC ka IP address dalein (e.g. http://192.168.1.15:5000)
-export const BASE_URL = `http://${window.location.hostname}:5000/api`;
+// export const BASE_URL = `http://${window.location.hostname}:5000/api`;
+export const BASE_URL = "https://localdashboad-backend.onrender.com/api";
 
 export const apiRequest = async (endpoint, method = "GET", body = null) => {
   const token = localStorage.getItem("token");
