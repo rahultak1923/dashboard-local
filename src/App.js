@@ -10,6 +10,8 @@ import ProfilePage from "./pages/ProfilePage";
 import EmployeeDetailsPage from "./pages/EmployeeDetailsPage";
 import Sidebar from "./components/Sidebar";
 import RatingsPage from "./pages/RatingsPage";
+import BlogsPage from "./pages/BlogsPage";
+import BlogEditorPage from "./pages/BlogEditorPage";
 
 export default function ITDashboard() {
   const [isAuthed, setIsAuthed] = useState(false);
@@ -23,6 +25,7 @@ export default function ITDashboard() {
   const [range, setRange] = useState("24h");
 
   const [employeesList, setEmployeesList] = useState([]);
+  const [editingBlog, setEditingBlog] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -141,7 +144,9 @@ export default function ITDashboard() {
                   {page === "Employees" && "Employee Directory & CRM"}
                   {page === "EmployeeDetails" && "Employee Details (Database)"}
                   {page === "AddEmployee" && "Register New Employee"}
+                  {page === "Blogs" && "Blogs & Content Publishing"}
                   {page === "Profile" && "My Account Profile"}
+                  {page === "BlogEditor" && (editingBlog ? "Edit Blog Post" : "Write New Blog")}
                   
                 </h1>
                 <p style={{ fontFamily: bodyFont, fontSize: 12.5, color: T.textSoft, margin: "2px 0 0" }}>
@@ -303,6 +308,33 @@ export default function ITDashboard() {
             )}
             {page === "Ratings" && (
   <RatingsPage currentUser={currentUser} />
+)}
+{page === "Blogs" && (
+  <BlogsPage
+    onNavigateCreate={() => {
+      setEditingBlog(null);
+      setPage("BlogEditor");
+    }}
+    onNavigateEdit={(blog) => {
+      setEditingBlog(blog);
+      setPage("BlogEditor");
+    }}
+  />
+)}
+
+{page === "BlogEditor" && (
+  <BlogEditorPage
+    currentUser={currentUser}
+    editingBlog={editingBlog}
+    onBack={() => {
+      setEditingBlog(null);
+      setPage("Blogs");
+    }}
+    onSaveSuccess={() => {
+      setEditingBlog(null);
+      setPage("Blogs");
+    }}
+  />
 )}
           </div>
         </main>
