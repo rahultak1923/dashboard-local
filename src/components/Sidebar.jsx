@@ -1,5 +1,5 @@
 import React from "react";
-import { LayoutGrid, Users, LogOut, Network, User, X, FileSpreadsheet, Database, Star } from "lucide-react";
+import { LayoutGrid, LogOut, Network, User, X, FileSpreadsheet, Database, Star, FileText } from "lucide-react";
 
 export default function Sidebar({ currentPage, setPage, onLogout, currentUser, sidebarOpen, setSidebarOpen }) {
   const isAdmin = currentUser?.role === "admin";
@@ -13,6 +13,9 @@ export default function Sidebar({ currentPage, setPage, onLogout, currentUser, s
     navItems.push({ label: "Employees", displayLabel: "Employees (Sheet)", icon: FileSpreadsheet });
     navItems.push({ label: "EmployeeDetails", displayLabel: "Employee Details (DB)", icon: Database });
   }
+
+  // Blogs tab (Employee aur Admin dono ke liye)
+  navItems.push({ label: "Blogs", displayLabel: "Blogs", icon: FileText });
 
   // Performance & Ratings tab (Sabhi ke liye)
   navItems.push({ label: "Ratings", displayLabel: "Performance & Ratings", icon: Star });
@@ -62,7 +65,7 @@ export default function Sidebar({ currentPage, setPage, onLogout, currentUser, s
       {/* Navigation List */}
       <nav style={{ display: "flex", flexDirection: "column", gap: 6 }}>
         {navItems.map(({ label, displayLabel, icon: Icon }) => {
-          const active = currentPage === label || (currentPage === "AddEmployee" && label === "Employees");
+          const active = currentPage === label || (currentPage === "AddEmployee" && label === "Employees") || (currentPage === "BlogEditor" && label === "Blogs");
           return (
             <div
               key={label}
