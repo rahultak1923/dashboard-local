@@ -1,5 +1,18 @@
 import React from "react";
-import { LayoutGrid, LogOut, Network, User, X, FileSpreadsheet, Database, Star, FileText } from "lucide-react";
+import {
+  LayoutGrid,
+  LogOut,
+  Network,
+  User,
+  X,
+  FileSpreadsheet,
+  Database,
+  Star,
+  FileText,
+  CalendarCheck,
+  Briefcase,
+  MessageSquare,
+} from "lucide-react";
 
 export default function Sidebar({ currentPage, setPage, onLogout, currentUser, sidebarOpen, setSidebarOpen }) {
   const isAdmin = currentUser?.role === "admin";
@@ -12,9 +25,14 @@ export default function Sidebar({ currentPage, setPage, onLogout, currentUser, s
   if (isAdmin) {
     navItems.push({ label: "Employees", displayLabel: "Employees (Sheet)", icon: FileSpreadsheet });
     navItems.push({ label: "EmployeeDetails", displayLabel: "Employee Details (DB)", icon: Database });
+    navItems.push({ label: "Hiring", displayLabel: "Hiring & Resumes", icon: Briefcase });
+    navItems.push({ label: "ChatbotLogs", displayLabel: "Chotu AI Logs", icon: MessageSquare });
   }
 
-  // Blogs tab (Employee aur Admin dono ke liye)
+  // Biometric Attendance tab (Admin & Employee dono ke liye)
+  navItems.push({ label: "Attendance", displayLabel: "Attendance", icon: CalendarCheck });
+
+  // Blogs tab (Admin & Employee dono ke liye)
   navItems.push({ label: "Blogs", displayLabel: "Blogs", icon: FileText });
 
   // Performance & Ratings tab (Sabhi ke liye)
@@ -40,11 +58,23 @@ export default function Sidebar({ currentPage, setPage, onLogout, currentUser, s
       {/* Brand Header */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 8px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{ width: 34, height: 34, borderRadius: 10, background: "linear-gradient(135deg, #00C2FF, #06E0D6)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div
+            style={{
+              width: 34,
+              height: 34,
+              borderRadius: 10,
+              background: "linear-gradient(135deg, #00C2FF, #06E0D6)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <Network size={18} color="#071238" strokeWidth={2.6} />
           </div>
           <div>
-            <div style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 600, fontSize: 15, color: "#fff" }}>DW CRM</div>
+            <div style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 600, fontSize: 15, color: "#fff" }}>
+              DW CRM
+            </div>
             <div style={{ fontFamily: "monospace", fontSize: 9.5, color: "#00C2FF" }}>
               {isAdmin ? "ADMIN PORTAL" : "EMPLOYEE PORTAL"}
             </div>
@@ -55,7 +85,15 @@ export default function Sidebar({ currentPage, setPage, onLogout, currentUser, s
           <button
             onClick={() => setSidebarOpen(false)}
             className="hamburger-btn"
-            style={{ background: "rgba(255,255,255,0.08)", border: "none", borderRadius: 8, width: 30, height: 30, color: "#fff", cursor: "pointer" }}
+            style={{
+              background: "rgba(255,255,255,0.08)",
+              border: "none",
+              borderRadius: 8,
+              width: 30,
+              height: 30,
+              color: "#fff",
+              cursor: "pointer",
+            }}
           >
             <X size={16} />
           </button>
@@ -65,7 +103,11 @@ export default function Sidebar({ currentPage, setPage, onLogout, currentUser, s
       {/* Navigation List */}
       <nav style={{ display: "flex", flexDirection: "column", gap: 6 }}>
         {navItems.map(({ label, displayLabel, icon: Icon }) => {
-          const active = currentPage === label || (currentPage === "AddEmployee" && label === "Employees") || (currentPage === "BlogEditor" && label === "Blogs");
+          const active =
+            currentPage === label ||
+            (currentPage === "AddEmployee" && label === "Employees") ||
+            (currentPage === "BlogEditor" && label === "Blogs");
+
           return (
             <div
               key={label}
@@ -84,7 +126,7 @@ export default function Sidebar({ currentPage, setPage, onLogout, currentUser, s
                 color: active ? "#fff" : "#8CA0D0",
                 fontWeight: active ? 600 : 500,
                 borderLeft: active ? "3px solid #00C2FF" : "3px solid transparent",
-                transition: "all 0.2s ease"
+                transition: "all 0.2s ease",
               }}
             >
               <Icon size={16} color={active ? "#00C2FF" : "#8CA0D0"} />
@@ -110,7 +152,7 @@ export default function Sidebar({ currentPage, setPage, onLogout, currentUser, s
             borderRadius: 8,
             cursor: "pointer",
             fontWeight: 600,
-            fontSize: 13
+            fontSize: 13,
           }}
         >
           <LogOut size={16} /> Log Out
